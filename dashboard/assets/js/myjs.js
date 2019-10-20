@@ -2,7 +2,7 @@ $.strength = function( element, password ) {
     var desc = [{'width':'0px'}, {'width':'20%'}, {'width':'40%'}, {'width':'60%'}, {'width':'80%'}, {'width':'100%'}];
     var score = 0;
 
-    if( password.length >3 ) {
+    if( password.length > 3 ) {
         score++;
     }
 
@@ -18,7 +18,7 @@ $.strength = function( element, password ) {
         score++;
     }
 
-    if ( password.length > 10 ) {
+    if ( password.length > 7 ) {
         score++;
     }
 

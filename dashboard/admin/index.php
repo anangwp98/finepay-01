@@ -15,6 +15,8 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 <?php
 session_start();
+
+include('../koneksi.php');
 if(!isset($_SESSION['username'])) {
    header('location:login.php'); 
 } else { 
@@ -412,220 +414,106 @@ if(!isset($_SESSION['username'])) {
         </div>
       </div>
       <div class="row mt-5">
-        <div class="col-xl-8 mb-5 mb-xl-0">
+        <div class="col-xl-12 mb-5 mb-xl-0">
           <div class="card shadow">
             <div class="card-header border-0">
               <div class="row align-items-center">
                 <div class="col">
-                  <h3 class="mb-0">Page visits</h3>
-                </div>
-                <div class="col text-right">
-                  <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                  <h3 class="mb-0">Data Admin</h3>
                 </div>
               </div>
             </div>
             <div class="table-responsive">
+
+            <?php 
+            $halaman = 5; //batasan record per halaman
+            $data_admin = "SELECT id_admin, nama, username FROM admin";
+            $hasil_admin = mysqli_query($koneksi, $data_admin);  
+            $total_record_admin = mysqli_num_rows($hasil_admin);
+            $halaman_record = ceil($total_record_admin / $halaman); 
+            
+            
+            ?>
               <!-- Projects table -->
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                   <tr>
-                    <th scope="col">Page name</th>
-                    <th scope="col">Visitors</th>
-                    <th scope="col">Unique users</th>
-                    <th scope="col">Bounce rate</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Action</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">
-                      /argon/
-                    </th>
-                    <td>
-                      4,569
+                <?php 
+                
+            if (($total_record_admin) > 0) {
+              while($row = mysqli_fetch_assoc($hasil_admin)) {
+                  echo "<tr> <th scope='row'>" . $row["id_admin"]."</th>
+                    <th scope='row'>" . $row["nama"]. "</th>
+                    <td>" . $row["username"]."</td>
+                    <td scope='row'>
+                      <button type='button' class='btn btn-outline-info' data-toggle='modal' data-target='#modal-notification". $row["id_admin"] . "'>Info</button>
                     </td>
-                    <td>
-                      340
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      /argon/index.html
-                    </th>
-                    <td>
-                      3,985
-                    </td>
-                    <td>
-                      319
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      /argon/charts.html
-                    </th>
-                    <td>
-                      3,513
-                    </td>
-                    <td>
-                      294
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      /argon/tables.html
-                    </th>
-                    <td>
-                      2,050
-                    </td>
-                    <td>
-                      147
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      /argon/profile.html
-                    </th>
-                    <td>
-                      1,795
-                    </td>
-                    <td>
-                      190
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
-                    </td>
-                  </tr>
+                  </tr>"; ?>
+                  
+                <!--
+                ======================================================================================
+                        SCRIPT UNTUK MENAMPILKAN MODAL
+                ======================================================================================
+                -->
+                  <div class="modal fade" id="modal-notification<?php echo $row["id_admin"]; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+                      <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+                          <div class="modal-content bg-gradient-danger">
+                            
+                              <div class="modal-header">
+                                  <h2 class="modal-title" id="modal-title-notification"><?php echo $row["id_admin"] ?></h2>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">×</span>
+                                  </button>
+                              </div>
+                              
+                              <div class="modal-body">
+                                
+                                  <div class="py-3 text-center">
+                                      <h3>Nama : </h3><p><?php echo $row["nama"] ?></p><br />
+                                      <h3>Username : </h3><p><?php echo $row["username"] ?></p>
+                                  </div>
+                                  
+                              </div>
+                              
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Close</button> 
+                              </div>
+                              
+                            </div>
+                        </div>
+                <!--
+                ======================================================================================
+                        SCRIPT AKHIR MENAMPILKAN MODAL
+                ======================================================================================
+                -->
+        <?php };
+            } else {
+              echo "0 results";
+            }
+                ?>
+                
                 </tbody>
               </table>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-4">
-          <div class="card shadow">
-            <div class="card-header border-0">
-              <div class="row align-items-center">
-                <div class="col">
-                  <h3 class="mb-0">Social traffic</h3>
-                </div>
-                <div class="col text-right">
-                  <a href="#!" class="btn btn-sm btn-primary">See all</a>
-                </div>
-              </div>
-            </div>
-            <div class="table-responsive">
-              <!-- Projects table -->
-              <table class="table align-items-center table-flush">
-                <thead class="thead-light">
-                  <tr>
-                    <th scope="col">Referral</th>
-                    <th scope="col">Visitors</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">
-                      Facebook
-                    </th>
-                    <td>
-                      1,480
-                    </td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <span class="mr-2">60%</span>
-                        <div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      Facebook
-                    </th>
-                    <td>
-                      5,480
-                    </td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <span class="mr-2">70%</span>
-                        <div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      Google
-                    </th>
-                    <td>
-                      4,807
-                    </td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <span class="mr-2">80%</span>
-                        <div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      Instagram
-                    </th>
-                    <td>
-                      3,678
-                    </td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <span class="mr-2">75%</span>
-                        <div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      twitter
-                    </th>
-                    <td>
-                      2,645
-                    </td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <span class="mr-2">30%</span>
-                        <div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <?php
+              for($i = 1; $i <= $halaman_record; $i++) {
+              ?>
+                <nav aria-label="...">
+              <ul class="pagination pagination-lg">
+                <li class="page-item"><a class="page-link" href="?halaman=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+              </ul>
+            </nav>
+               <?php
+              }
+              ?>
+              
             </div>
           </div>
         </div>
