@@ -28,6 +28,7 @@ if(isset($_POST['log_user'])){
             header('location: index.php');
         }else {
             array_push($errors, "Username atau pw salahh");
+            header('location: login.php');
         }
     }
 }
