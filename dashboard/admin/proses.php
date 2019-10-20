@@ -13,7 +13,7 @@ if (isset($_POST['reg_admin'])) {
   $user_check_query = "SELECT * FROM admin WHERE nama='$nama' OR username='$username' LIMIT 1";
   $result = mysqli_query($koneksi, $user_check_query);
   $user = mysqli_fetch_assoc($result);
-
+  
   if (count($errors) == 0) {
     $password = md5($password);
     
