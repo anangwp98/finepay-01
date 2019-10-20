@@ -100,8 +100,8 @@
         <div class="header-body text-center mb-7">
           <div class="row justify-content-center">
             <div class="col-lg-5 col-md-6">
-              <h1 class="text-white">Welcome!</h1>
-              <p class="text-lead text-light">Use these awesome forms to login or create new account in your project for free.</p>
+              <h1 class="text-white">Selamat Datang Sahabat FinePay</h1>
+              <p class="text-lead text-light">Silahkan Login</p>
             </div>
           </div>
         </div>
@@ -138,7 +138,7 @@
                 <div class="form-group mb-3">
                   <div class="input-group input-group-alternative">
                     <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                      <span class="input-group-text"><i class="fas fa-hashtag"></i></span>
                     </div>
                     <input class="form-control" placeholder="Username" type="text" name="username">
                   </div>

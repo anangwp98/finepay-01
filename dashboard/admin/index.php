@@ -14,6 +14,7 @@
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 <?php
+
 session_start();
 
 include('../koneksi.php');
@@ -22,6 +23,8 @@ if(!isset($_SESSION['username'])) {
 } else { 
    $username = $_SESSION['username']; 
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -220,6 +223,12 @@ if(!isset($_SESSION['username'])) {
           </div>
         </form>
         <!-- User -->
+
+        <?php
+          $a_sql = "SELECT nama as tampil from admin where username='$username'";
+          $b_query = mysqli_query($koneksi,$a_sql);
+          $nama_tampil = mysqli_fetch_array($b_query);
+        ?>
         <ul class="navbar-nav align-items-center d-none d-md-flex">
           <li class="nav-item dropdown">
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -228,7 +237,7 @@ if(!isset($_SESSION['username'])) {
                   <img alt="Image placeholder" src="../assets/img/theme/team-4-800x800.jpg">
                 </span>
                 <div class="media-body ml-2 d-none d-lg-block">
-                  <b><?php echo $username;?></b>
+                  <b><?php echo $nama_tampil['tampil']?> </b>
                 </div>
               </div>
             </a>
@@ -263,6 +272,12 @@ if(!isset($_SESSION['username'])) {
       </div>
     </nav>
     <!-- End Navbar -->
+
+    <?php
+     $sql = "SELECT count(*) as Jumlah from admin";
+     $query1 = mysqli_query($koneksi, $sql );
+     $jumlah_data = mysqli_fetch_array($query1);
+    ?>
     <!-- Header -->
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
       <div class="container-fluid">
@@ -274,8 +289,8 @@ if(!isset($_SESSION['username'])) {
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
-                      <span class="h2 font-weight-bold mb-0">350,897</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Jumlah Admin</h5>
+                      <span class="h2 font-weight-bold mb-0"><?php echo $jumlah_data['Jumlah']?></span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
