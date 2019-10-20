@@ -41,8 +41,10 @@ if (isset($_POST['reg_admin'])) {
 ======================================================================================
  */
 if(isset($_POST['log_user'])){
+  $nama = mysqli_real_escape_string($koneksi, $_POST['nama']);
   $username = mysqli_real_escape_string($koneksi, $_POST['username']);
   $password = mysqli_real_escape_string($koneksi, $_POST['password']);
+  
 
   if (empty($username)) {
       array_push($errors, "username harus diisi");
@@ -57,6 +59,7 @@ if(isset($_POST['log_user'])){
       $results = mysqli_query($koneksi, $query);
       if (mysqli_num_rows($results) == 1) {
           $_SESSION['username'] = $username;
+          $_SESSION['nama'] = $nama;
           $_SESSION['succes'] = "You are now logged in";
           header('location: index.php');
       }else {
