@@ -111,17 +111,17 @@
                 <div class="form-group">
                   <div class="input-group input-group-alternative mb-3">
                     <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                      <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Nama Anda" name="nama" type="text">
+                    <input class="form-control" placeholder="Nama Anda" name="nama" type="text" require="required">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-alternative mb-3">
                     <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                      <span class="input-group-text"><i class="fas fa-hashtag"></i></span>
                     </div>
-                    <input class="form-control username" type="text" name="username" placeholder="Username">
+                    <input class="form-control username" type="text" name="username" placeholder="Username" require="required">
                   </div>
                 </div>
                 <div class="form-group">
@@ -129,11 +129,16 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Kata Kunci" type="password" name="pass">
+                    <input class="form-control" placeholder="Kata Kunci" type="password" name="pass" id="pwd" require="required">
                   </div>
                 </div>
                 <div id="err_msg"></div>
-                <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div>
+                <div class="text-muted font-italic"><small>password strength:</div>
+
+                  <div class="progress">
+                    <div class="progress-bar bg-info" id="progress-bar"></div>
+                  </div>
+                
                 <div class="text-center">
                   <button type="submit" name="reg_admin" class="btn btn-primary mt-4">Create account</button>
                 </div>
