@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,6 +21,7 @@
 </head>
 
 <body class="bg-default">
+
   <div class="main-content">
     <!-- Navbar -->
     <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
@@ -83,8 +85,8 @@
         <div class="header-body text-center mb-7">
           <div class="row justify-content-center">
             <div class="col-lg-5 col-md-6">
-              <h1 class="text-white">Welcome!</h1>
-              <p class="text-lead text-light">Use these awesome forms to login or create new account in your project for free.</p>
+              <h1 class="text-white">Mari Bergabung Bersama Sahabat FinePay</h1>
+              <p class="text-lead text-light">Daftar sekarang dan tuntaskan segala tagihan Anda. </p>
             </div>
           </div>
         </div>
@@ -103,7 +105,7 @@
           <div class="card bg-secondary shadow border-0">
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <small>Isikan data kamu secara lengkap</small>
+                <small>Selamat Datang di FinePay</small>
               </div>
               <form action="./proses.php" method="POST">
                 <div class="form-group">
@@ -111,7 +113,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Nama" name="nama" type="text">
+                    <input class="form-control" placeholder="Nama Anda" name="nama" type="text">
                   </div>
                 </div>
                 <div class="form-group">
@@ -119,7 +121,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control username" type="text" name="username" placeholder="Contoh : ANANGWP98">
+                    <input class="form-control username" type="text" name="username" placeholder="Username">
                   </div>
                 </div>
                 <div class="form-group">
@@ -130,6 +132,7 @@
                     <input class="form-control" placeholder="Kata Kunci" type="password" name="pass">
                   </div>
                 </div>
+                <div id="err_msg"></div>
                 <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div>
                 <div class="text-center">
                   <button type="submit" name="reg_admin" class="btn btn-primary mt-4">Create account</button>
@@ -149,6 +152,8 @@
   <!--   Argon JS   -->
   <script src="../assets/js/argon-dashboard.min.js?v=1.1.0"></script>
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+
+  <script src="../assets/js/myjs.js"></script>
   <script>
     window.TrackJS &&
       TrackJS.install({

@@ -26,6 +26,6 @@ if (isset($_POST['reg_admin'])) {
 
   	$query = "INSERT INTO admin VALUES('$id','$nama', '$low_username','$password')";
     mysqli_query($koneksi, $query);
-    header('location: ./register.html');
+    header('location: ./register.php');
   }
 }
