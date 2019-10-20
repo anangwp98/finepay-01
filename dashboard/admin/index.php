@@ -577,7 +577,7 @@ if(!isset($_SESSION['username'])) {
 
     $(document).ready(function(){
         $('#tabel-data').DataTable({
-          "lengthMenu": [ [5, 10], [5, 10] ],
+          "lengthMenu": [ [5, 10, -1], [5, 10, "Semua"] ],
           "pagingType": "numbers"
         });
     });
