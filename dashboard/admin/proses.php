@@ -26,7 +26,7 @@ if (isset($_POST['reg_admin'])) {
 
     $new_auto_increment=$low_username;
     
-    $date = date('dmY');
+    $date = date('dmY-His');
     $id="fn".$new_auto_increment.$date;
 
   	$query = "INSERT INTO admin VALUES('$id','$nama', '$low_username','$password')";

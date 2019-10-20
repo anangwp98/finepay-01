@@ -46,6 +46,9 @@ if(!isset($_SESSION['username'])) {
   <link href="../assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="../assets/css/argon-dashboard.css?v=1.1.0" rel="stylesheet" />
+
+  <!-- CSS untuk DataTable -->
+  <link rel="stylesheet" type="text/css" href="../assets/datables/datatables.min.css"/>
 </head>
 
 <body class="">
@@ -426,16 +429,19 @@ if(!isset($_SESSION['username'])) {
             <div class="table-responsive">
 
             <?php 
+            $page = (isset($_GET["halaman"])) ? (int)$_GET["halaman"] : 1;
             $halaman = 5; //batasan record per halaman
+
+            //untuk menentukan dari data ke berapa yang akan ditampilkan pada tabel yang ada di database
+            $limit_start = ($halaman - 1) * $halaman;
+
             $data_admin = "SELECT id_admin, nama, username FROM admin";
-            $hasil_admin = mysqli_query($koneksi, $data_admin);  
+            $hasil_admin = mysqli_query($koneksi, $data_admin); 
+
             $total_record_admin = mysqli_num_rows($hasil_admin);
-            $halaman_record = ceil($total_record_admin / $halaman); 
-            
-            
             ?>
               <!-- Projects table -->
-              <table class="table align-items-center table-flush">
+              <table id="tabel-data" class="table align-items-center">
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">ID</th>
@@ -468,7 +474,7 @@ if(!isset($_SESSION['username'])) {
                           <div class="modal-content bg-gradient-danger">
                             
                               <div class="modal-header">
-                                  <h2 class="modal-title" id="modal-title-notification"><?php echo $row["id_admin"] ?></h2>
+                                  <h2 class="modal-title" id="modal-title-notification">ID - <?php echo $row["id_admin"] ?></h2>
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       <span aria-hidden="true">×</span>
                                   </button>
@@ -502,17 +508,6 @@ if(!isset($_SESSION['username'])) {
                 
                 </tbody>
               </table>
-              <?php
-              for($i = 1; $i <= $halaman_record; $i++) {
-              ?>
-                <nav aria-label="...">
-              <ul class="pagination pagination-lg">
-                <li class="page-item"><a class="page-link" href="?halaman=<?php echo $i; ?>"><?php echo $i; ?></a></li>
-              </ul>
-            </nav>
-               <?php
-              }
-              ?>
               
             </div>
           </div>
@@ -555,12 +550,22 @@ if(!isset($_SESSION['username'])) {
   <!--   Argon JS   -->
   <script src="../assets/js/argon-dashboard.min.js?v=1.1.0"></script>
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+
+  <!-- JS Data Table -->
+  <script type="text/javascript" src="../assets/datables/datatables.min.js"></script>
   <script>
     window.TrackJS &&
       TrackJS.install({
         token: "ee6fab19c5a04ac1a32a645abde4613a",
         application: "argon-dashboard-free"
       });
+
+    $(document).ready(function(){
+        $('#tabel-data').DataTable({
+          "lengthMenu": [ [5, 10], [5, 10] ],
+          "pagingType": "numbers"
+        });
+    });
   </script>
 </body>
 
