@@ -40,7 +40,7 @@ if (isset($_POST['reg_admin'])) {
         SCRIPT UNTUK LOGIN ADMIN
 ======================================================================================
  */
-if(isset($_POST['log_user'])){
+if(isset($_POST['login_admin'])){
   $nama = mysqli_real_escape_string($koneksi, $_POST['nama']);
   $username = mysqli_real_escape_string($koneksi, $_POST['username']);
   $password = mysqli_real_escape_string($koneksi, $_POST['password']);

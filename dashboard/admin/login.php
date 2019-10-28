@@ -158,7 +158,7 @@
                   </label>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary my-4" name="log_user">Sign in</button>
+                  <button type="submit" class="btn btn-primary my-4" name="login_admin">Sign in</button>
                 </div>
               </form>
             </div>
