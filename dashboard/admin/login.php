@@ -42,7 +42,7 @@
     <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
       <div class="container px-4">
         <a class="navbar-brand" href="../index.html">
-          <img src="../assets/img/brand/white.png" />
+          <img src="" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-main" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -67,12 +67,6 @@
           <!-- Navbar items -->
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link nav-link-icon" href="../index.html">
-                <i class="ni ni-planet"></i>
-                <span class="nav-link-inner--text">Dashboard</span>
-              </a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link nav-link-icon" href="./register.php">
                 <i class="ni ni-circle-08"></i>
                 <span class="nav-link-inner--text">Register</span>
@@ -82,12 +76,6 @@
               <a class="nav-link nav-link-icon" href="./login.php">
                 <i class="ni ni-key-25"></i>
                 <span class="nav-link-inner--text">Login</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link nav-link-icon" href="../examples/profile.html">
-                <i class="ni ni-single-02"></i>
-                <span class="nav-link-inner--text">Profile</span>
               </a>
             </li>
           </ul>
@@ -132,7 +120,7 @@
             </div>
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <small>Or sign in with credentials</small>
+                <small>Silahkan masuk dengan akun anda.</small>
               </div>
               <form action="./proses.php" method="POST">
                 <div class="form-group mb-3">
@@ -152,23 +140,20 @@
                   </div>
                 </div>
                 <div class="custom-control custom-control-alternative custom-checkbox">
-                  <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-                  <label class="custom-control-label" for=" customCheckLogin">
-                    <span class="text-muted">Remember me</span>
+                  <input class="custom-control-input" id="setcookie" type="checkbox" name="setcookie">
+                  <label class="custom-control-label" for="setcookie">
+                    <span class="text-muted">Ingat saya</span>
                   </label>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary my-4" name="log_user">Sign in</button>
+                  <button type="submit" class="btn btn-primary my-4" name="login_admin">Sign in</button>
                 </div>
               </form>
             </div>
           </div>
           <div class="row mt-3">
-            <div class="col-6">
-              <a href="#" class="text-light"><small>Forgot password?</small></a>
-            </div>
-            <div class="col-6 text-right">
-              <a href="#" class="text-light"><small>Create new account</small></a>
+            <div class="col-xl-12 text-right">
+              <a href="./register.php" class="text-light"><small>Create new account</small></a>
             </div>
           </div>
         </div>
@@ -179,24 +164,8 @@
         <div class="row align-items-center justify-content-xl-between">
           <div class="col-xl-6">
             <div class="copyright text-center text-xl-left text-muted">
-              © 2018 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+              © 2019 <a href="http://www.amikom.ac.id/" class="font-weight-bold ml-1" target="_blank">AMIKOM University</a>
             </div>
-          </div>
-          <div class="col-xl-6">
-            <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-              <li class="nav-item">
-                <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
-              </li>
-              <li class="nav-item">
-                <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-              </li>
-              <li class="nav-item">
-                <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
