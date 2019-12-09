@@ -13135,6 +13135,11 @@ a.text-default:focus {
   color: #fff !important;
 }
 
+a.text-white {
+  
+  padding: 0 10px;
+}
+
 a.text-white:hover,
 a.text-white:focus {
   color: #e6e6e6 !important;
@@ -15860,7 +15865,7 @@ a.btn-icon-only {
 
 .footer {
   background: #f7fafc;
-  padding: 2.5rem 0;
+  padding: 2.5rem 0 ;
 }
 
 .footer .col-footer .heading {

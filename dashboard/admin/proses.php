@@ -1,66 +1,42 @@
 <?php
-session_start();
 include('../koneksi.php');
-
-/*--
-======================================================================================
-        SCRIPT UNTUK MENDAFTAR ADMIN
-======================================================================================
- */
-if (isset($_POST['reg_admin'])) {
-  $nama = mysqli_real_escape_string($koneksi, $_POST['nama']);
-  $username = mysqli_real_escape_string($koneksi, $_POST['username']);
-  $password = mysqli_real_escape_string($koneksi, $_POST['pass']);
-  
-  $user_check_query = "SELECT * FROM admin WHERE nama='$nama' OR username='$username' LIMIT 1";
-  $result = mysqli_query($koneksi, $user_check_query);
-  $user = mysqli_fetch_assoc($result);
-  
-  if (count($errors) == 0) {
-    $password = md5($password);
+if(isset($_POST['simpan_user'])) {
+    $username           = $_POST['username'];
+    $nama               = $_POST['nama'];
+    $password           = md5($_POST['password']);
+    $email              = $_POST['email'];
+    $tglLahir           = $_POST['tglLahir'];
+    $jk                 = $_POST['jenkel'];
+    $alamat             = $_POST['alamat'];
+    $telp               = $_POST['telp'];
+    $level              = $_POST['level'];
     
     $low_username = strtolower($username);
 
     $new_auto_increment=$low_username;
     
-    $date = date('dmY-His');
-    $id="fn".$new_auto_increment.$date;
-
-  	$query = "INSERT INTO admin VALUES('$id','$nama', '$low_username','$password')";
-    mysqli_query($koneksi, $query);
-    header('location: ./register.php');
-  }
+    $date = date('dmY-Hi');
+    $id="FN".$new_auto_increment.$date;
+    $query="INSERT INTO `users` (`id`, `username`, `nama`, `email`, `password`, `tglLahir`, `jk`, `alamat`, `nomorTelp`, `level`) VALUES ('$id', '$low_username', '$nama', '$email', '$password', '$tglLahir', '$jk', '$alamat', '$telp', '$level')";
+    if(mysqli_query($koneksi, $query)) {
+        header("location:./index.php");
+    } else {
+        echo"<script language='javascript'> alert('Data Gagal Disimpan!');history.go(-1); </script>";
+    }
+} else if(isset($_POST['simpan_barang'])) {
+    $nama           = $_POST['nama'];
+    $harga          = $_POST['harga'];
+    
+    $id_nama = str_replace(' ', '-', $nama);
+    $id_increment = rand(); 
+    $id="BRG-".$id_increment.$id_nama;
+    $query="INSERT INTO `barang` (`id_barang`, `nama_barang`, `harga`) VALUES ('$id', '$nama', '$harga')";
+    if(mysqli_query($koneksi, $query)) {
+        header("location:./index.php");
+    } else {
+        echo"<script language='javascript'> alert('Data Gagal Disimpan!');history.go(-1); </script>";
+    }
+} else {
+    echo"<script language='javascript'> alert('Data Gagal Disimpan!');history.go(-1); </script>";
 }
-
-/*
-======================================================================================
-        SCRIPT UNTUK LOGIN ADMIN TEST
-======================================================================================
- */
-if(isset($_POST['login_admin'])){
-  $nama = mysqli_real_escape_string($koneksi, $_POST['nama']);
-  $username = mysqli_real_escape_string($koneksi, $_POST['username']);
-  $password = mysqli_real_escape_string($koneksi, $_POST['password']);
-  
-
-  if (empty($username)) {
-      array_push($errors, "username harus diisi");
-  }
-  if (empty($password)) {
-      array_push($errors, "pasword harus isi");
-  }
-
-  if (count($errors) == 0) {
-      $password = md5($password);
-      $query = "SELECT * from admin where username='$username' AND password='$password'";
-      $results = mysqli_query($koneksi, $query);
-      if (mysqli_num_rows($results) == 1) {
-          $_SESSION['username'] = $username;
-          $_SESSION['nama'] = $nama;
-          $_SESSION['succes'] = "You are now logged in";
-          header('location: index.php');
-      }else {
-        echo "Username atau password salah";
-      }
-  }
-}
+?>
