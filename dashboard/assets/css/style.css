@@ -20,3 +20,7 @@ span.font-weight-bold.mb-0.font-biru {
     color: #172b4d;
     font-size: 15px;
 }
+
+.h5.font-weight-300.capitalize-css {
+    text-transform: capitalize;;
+}
