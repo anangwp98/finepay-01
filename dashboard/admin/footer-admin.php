@@ -33,6 +33,7 @@
 
   <!-- JS Data Table -->
   <script type="text/javascript" src="../assets/datables/datatables.min.js"></script>
+  <script src="../assets/js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
   <script>
     window.TrackJS &&
       TrackJS.install({
@@ -52,5 +53,4 @@
     });
   </script>
 </body>
-
 </html>

@@ -13,7 +13,7 @@ if(isset($_POST['simpan_user'])) {
     
     $low_username = strtolower($username);
 
-    $new_auto_increment=$low_username;
+    $new_auto_increment=$low_username; 
     
     $date = date('dmY-Hi');
     $id="FN".$new_auto_increment.$date;
@@ -37,6 +37,6 @@ if(isset($_POST['simpan_user'])) {
         echo"<script language='javascript'> alert('Data Gagal Disimpan!');history.go(-1); </script>";
     }
 } else {
-    echo"<script language='javascript'> alert('Data Gagal Disimpan!');history.go(-1); </script>";
+    echo "<script language='javascript'> alert('Data Gagal Disimpan!');history.go(-1); </script>";
 }
 ?>

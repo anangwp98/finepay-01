@@ -45,20 +45,21 @@
               </div>
             </div>
             <div class="card-body">
-              <form>
+              <form action="proses-update.php" action="POST">
                 <h6 class="heading-small text-muted mb-4">Informasi Akun</h6>
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-username">Username</label>
-                        <input type="text" class="form-control form-control-alternative" value="<?php echo $_SESSION['username']; ?>">
+                        <input type="text" name="username" class="form-control form-control-alternative" value="<?php echo $_SESSION['username']; ?>" disabled>
+                        <input type="text" name="id" class="form-control form-control-alternative" value="<?php echo $_SESSION['id']; ?>" hidden>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Alamat Email</label>
-                        <input type="email" class="form-control form-control-alternative" value="<?php echo $_SESSION['email']; ?>">
+                        <input type="email" name="email" class="form-control form-control-alternative" value="<?php echo $_SESSION['email']; ?>">
                       </div>
                     </div>
                   </div>
@@ -66,23 +67,20 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Nama Lengkap</label>
-                        <input type="text" class="form-control form-control-alternative" value="<?php echo $_SESSION['nama']; ?>">
+                        <input type="text" name="nama" class="form-control form-control-alternative" value="<?php echo $_SESSION['nama']; ?>">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-last-name">Jenis Kelamin</label>
-                        <label class="form-control form-control-alternative">
-                          <?php
-                            if($_SESSION['jk'] == 'L') {
-                              echo "Laki-Laki";
-                            } else if ($_SESSION['jk'] == 'P') {
-                              echo "Perempuan";
-                            } else {
-                              echo "Belum Terdefinisikan";
-                            }
-                          ?>
-                        </label>
+                      <label class="form-control-label" for="input-address">Jenis Kelamin</label>
+                        <div class="custom-control custom-radio mb-3">
+                        <input type="radio" name="jenkel" class="custom-control-input" value="L" id="L" <?php if($_SESSION['jk']=="L"){ echo "checked";}?>/>
+                          <label class="custom-control-label" for="L">Laki-Laki</label>
+                        </div>
+                        <div class="custom-control custom-radio mb-3">
+                          <input type="radio" name="jenkel" class="custom-control-input" id="P" value="L" <?php if($_SESSION['jk']=="P"){ echo "checked";}?>/>
+                          <label class="custom-control-label" for="P">Perempuan</label>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -94,7 +92,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class="form-control-label" for="input-address">Tanggal Lahir</label>
-                        <label class="form-control form-control-alternative"><?php echo $_SESSION['tglLahir']; ?></label>
+                        <input type="date" name="tglLahir" class="form-control form-control-alternative" value="<?php echo $_SESSION['tglLahir']; ?>">
                       </div>
                     </div>
                   </div>
@@ -104,16 +102,11 @@
                 <h6 class="heading-small text-muted mb-4">Alamat</h6>
                 <div class="pl-lg-4">
                   <div class="form-group">
-                    <textarea rows="4" class="form-control form-control-alternative"><?php echo $_SESSION['alamat']; ?></textarea>
+                    <textarea rows="4" name="alamat" class="form-control form-control-alternative"><?php echo $_SESSION['alamat']; ?></textarea>
                   </div>
                 </div>
-                <button class="btn btn-icon btn-3 btn-primary col-lg-3" type="button">
-                  <span class="btn-inner--icon"><i class="fas fa-check"></i></span>
-                  <span class="btn-inner--text">Simpan</span>
-                </button><button class="btn btn-icon btn-3 btn-warning col-lg-3" type="button">
-                  <span class="btn-inner--icon"><i class="fas fa-ban"></i></span>
-                  <span class="btn-inner--text">Batal</span>
-                </button>
+               <input type="submit" value="Simpan"   name="update" class="btn btn-primary">
+                <input TYPE="button" VALUE="Batal" onClick="history.go(-1);" class="btn btn-warning">
               </form>
             </div>
           </div>

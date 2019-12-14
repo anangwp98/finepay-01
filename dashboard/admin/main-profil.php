@@ -55,7 +55,7 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-username">Username</label>
-                        <label class="form-control form-control-alternative"><?php echo $_SESSION['username']; ?></label>
+                        <input class="form-control form-control-alternative" disabled value="<?php echo $_SESSION['username']; ?>">
                       </div>
                     </div>
                     <div class="col-lg-6">

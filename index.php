@@ -20,8 +20,8 @@
   <header class="header-global">
     <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom">
       <div class="container">
-        <a class="navbar-brand mr-lg-5" href="./index.html">
-          <img alt="image" src="./assets/img/brand/white.png">
+        <a class="navbar-brand mr-lg-5" href="./index.php">
+          <img alt="image" src="./assets/img/brand/logo_finepay_white.png">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -30,7 +30,7 @@
           <div class="navbar-collapse-header">
             <div class="row">
               <div class="col-6 collapse-brand">
-                <a href="./index.html">
+                <a href="./index.php">
                   <img alt="image" src="./assets/img/brand/blue.png">
                 </a>
               </div>
@@ -46,26 +46,26 @@
             <li class="nav-item dropdown">
               <a href="#" class="nav-link" data-toggle="dropdown" role="button">
                 <i class="ni ni-ui-04 d-lg-none"></i>
-                <span class="nav-link-inner--text">Components</span>
+                <span class="nav-link-inner--text">Produk Kami</span>
               </a>
               <div class="dropdown-menu dropdown-menu-xl">
                 <div class="dropdown-menu-inner">
-                  <a href="https://demos.creative-tim.com/argon-design-system/docs/getting-started/overview.html" class="media d-flex align-items-center">
+                  <a href="#" class="media d-flex align-items-center">
                     <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
                       <i class="ni ni-spaceship"></i>
                     </div>
                     <div class="media-body ml-3">
-                      <h6 class="heading text-primary mb-md-1">Getting started</h6>
-                      <p class="description d-none d-md-inline-block mb-0">Learn how to use Argon compiling Scss, change brand colors and more.</p>
+                      <h6 class="heading text-primary mb-md-1">Pembayaran Tagihan</h6>
+                      <p class="description d-none d-md-inline-block mb-0">Kami siap membantu manajemen pembayaran tagihan anda di beberapa layanan penyedia cicilan dengan bunga ringan.</p>
                     </div>
                   </a>
-                  <a href="https://demos.creative-tim.com/argon-design-system/docs/foundation/colors.html" class="media d-flex align-items-center">
+                  <a href="#" class="media d-flex align-items-center">
                     <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
                       <i class="ni ni-palette"></i>
                     </div>
                     <div class="media-body ml-3">
-                      <h6 class="heading text-primary mb-md-1">Foundation</h6>
-                      <p class="description d-none d-md-inline-block mb-0">Learn more about colors, typography, icons and the grid system we used for Argon.</p>
+                      <h6 class="heading text-primary mb-md-1">Pengajuan Cicilan</h6>
+                      <p class="description d-none d-md-inline-block mb-0">Selain kami juga membantu pembayaran, kami juga melayani pengajuan cicilan barang yang sudah kami sediakan.</p>
                     </div>
                   </a>
                   <a href="https://demos.creative-tim.com/argon-design-system/docs/components/alerts.html" class="media d-flex align-items-center">
@@ -73,23 +73,11 @@
                       <i class="ni ni-ui-04"></i>
                     </div>
                     <div class="media-body ml-3">
-                      <h5 class="heading text-warning mb-md-1">Components</h5>
-                      <p class="description d-none d-md-inline-block mb-0">Browse our 50 beautiful handcrafted components offered in the Free version.</p>
+                      <h5 class="heading text-warning mb-md-1">Fine Jobs</h5>
+                      <p class="description d-none d-md-inline-block mb-0">Yang paling terpenting kami juga menyediakan solusi pembiaayaan buat user kami dengan adanya Fine Jobs.</p>
                     </div>
                   </a>
                 </div>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#" class="nav-link" data-toggle="dropdown" role="button">
-                <i class="ni ni-collection d-lg-none"></i>
-                <span class="nav-link-inner--text">Examples</span>
-              </a>
-              <div class="dropdown-menu">
-                <a href="./examples/landing.html" class="dropdown-item">Landing</a>
-                <a href="./examples/profile.html" class="dropdown-item">Profile</a>
-                <a href="./examples/login.html" class="dropdown-item">Login</a>
-                <a href="./examples/register.html" class="dropdown-item">Register</a>
               </div>
             </li>
           </ul>
@@ -167,7 +155,7 @@
           <div class="col px-0">
             <div class="row align-items-center justify-content-center">
               <div class="col-lg-6 text-center">
-                <img alt="image" src="./assets/img/brand/white.png" style="width: 200px;" class="img-fluid">
+                <img alt="image" src="./assets/img/brand/logo_finepay_white.png" style="width: 200px;" class="img-fluid">
                 <p class="lead text-white">A beautiful Design System for Bootstrap 4. It's Free and Open Source.</p>
                 <div class="btn-wrapper mt-5">
                   <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-lg btn-white btn-icon mb-3 mb-sm-0">
@@ -464,7 +452,7 @@
                       <div class="navbar-collapse-header">
                         <div class="row">
                           <div class="col-6 collapse-brand">
-                            <a href="./index.html">
+                            <a href="./index.php">
                               <img alt="image" src="./assets/img/brand/blue.png">
                             </a>
                           </div>
@@ -511,7 +499,7 @@
                       <div class="navbar-collapse-header">
                         <div class="row">
                           <div class="col-6 collapse-brand">
-                            <a href="./index.html">
+                            <a href="./index.php">
                               <img alt="image" src="./assets/img/brand/blue.png">
                             </a>
                           </div>
@@ -576,7 +564,7 @@
             <div class="navbar-collapse-header">
               <div class="row">
                 <div class="col-6 collapse-brand">
-                  <a href="./index.html">
+                  <a href="./index.php">
                     <img alt="image" src="./assets/img/brand/blue.png">
                   </a>
                 </div>
@@ -628,7 +616,7 @@
             <div class="navbar-collapse-header">
               <div class="row">
                 <div class="col-6 collapse-brand">
-                  <a href="./index.html">
+                  <a href="./index.php">
                     <img alt="image" src="./assets/img/brand/blue.png">
                   </a>
                 </div>
@@ -671,7 +659,7 @@
             <div class="navbar-collapse-header">
               <div class="row">
                 <div class="col-6 collapse-brand">
-                  <a href="./index.html">
+                  <a href="./index.php">
                     <img alt="image" src="./assets/img/brand/blue.png">
                   </a>
                 </div>
@@ -723,7 +711,7 @@
             <div class="navbar-collapse-header">
               <div class="row">
                 <div class="col-6 collapse-brand">
-                  <a href="./index.html">
+                  <a href="./index.php">
                     <img alt="image" src="./assets/img/brand/blue.png">
                   </a>
                 </div>
@@ -775,7 +763,7 @@
             <div class="navbar-collapse-header">
               <div class="row">
                 <div class="col-6 collapse-brand">
-                  <a href="./index.html">
+                  <a href="./index.php">
                     <img alt="image" src="./assets/img/brand/blue.png">
                   </a>
                 </div>
@@ -821,7 +809,7 @@
             <div class="navbar-collapse-header">
               <div class="row">
                 <div class="col-6 collapse-brand">
-                  <a href="./index.html">
+                  <a href="./index.php">
                     <img alt="image" src="./assets/img/brand/blue.png">
                   </a>
                 </div>
