@@ -92,7 +92,15 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class="form-control-label" for="input-address">Tanggal Lahir</label>
-                        <input type="date" name="tglLahir" class="form-control form-control-alternative" value="<?php echo $_SESSION['tglLahir']; ?>">
+                        
+                        <div class="form-group">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                            </div>
+                            <input class="form-control datepicker" name="tglLahir"  placeholder="Select date" type="text" value="<?php echo $_SESSION['tglLahir']; ?>">
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -105,7 +113,7 @@
                     <textarea rows="4" name="alamat" class="form-control form-control-alternative"><?php echo $_SESSION['alamat']; ?></textarea>
                   </div>
                 </div>
-               <input type="submit" value="Simpan"   name="update" class="btn btn-primary">
+                <input type="submit" value="Simpan" name="update" class="btn btn-primary">
                 <input TYPE="button" VALUE="Batal" onClick="history.go(-1);" class="btn btn-warning">
               </form>
             </div>

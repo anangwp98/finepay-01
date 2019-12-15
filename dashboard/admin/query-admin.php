@@ -1,4 +1,4 @@
-<?php 
+<?php  
 include('../koneksi.php');
 
 // cek apakah yang mengakses halaman ini sudah login

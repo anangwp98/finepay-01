@@ -2,6 +2,10 @@
               <div class=" dropdown-header noti-title">
                 <h6 class="text-overflow m-0">Welcome!</h6>
               </div>
+              <a href="./index.php" class="dropdown-item">
+              <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+              </a>
               <a href="./profil-admin.php" class="dropdown-item">
                 <i class="ni ni-single-02"></i>
                 <span>My profile</span>

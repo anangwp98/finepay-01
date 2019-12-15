@@ -6,6 +6,6 @@ if(isset($_SESSION['username'])) {
   include('main-profil.php');
   include('footer-admin.php');
 } else {
-  echo "ERROR!";
+  header("location:../../dashboard/");
 }
 ?>

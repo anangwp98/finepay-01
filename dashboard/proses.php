@@ -20,14 +20,14 @@ if($password == '' AND $username == '') {
 } else if ( $username == '') {
 	echo"<script language='javascript'> alert('Username harus diisi!');history.go(-1); </script>";
 } else {	
-	$query_login = mysqli_query($koneksi, "SELECT * FROM users WHERE username='$username' AND password=md5('$password')");
+	$query_login = mysqli_query($koneksi, "SELECT id, username, nama, email, password, DATE_FORMAT(tglLahir, '%M %d %Y') as tglLahir, jk, alamat, nomorTelp, level FROM users WHERE username='$username' AND password=md5('$password')");
 	$cek_data = mysqli_num_rows($query_login);
 	if($cek_data > 0) {
 		$data = mysqli_fetch_assoc($query_login);
 		// cek jika user login sebagai admin
 		if($data['level']=="admin"){
 			// buat session login dan username
-			$_SESSION['id'] =$data['id'];
+			$_SESSION['id'] = $data['id'];
 			$_SESSION['nama'] = $data['nama'];
 			$_SESSION['username'] = $username;
 			$_SESSION['email'] = $data['email'];
@@ -52,7 +52,6 @@ if($password == '' AND $username == '') {
 			header("location:./user/");
 		}
 	}else{
-		
 		echo"<script language='javascript'> alert('Username atau password salah!');history.go(-1); </script>";
 	}
 }

@@ -33,7 +33,8 @@
 
   <!-- JS Data Table -->
   <script type="text/javascript" src="../assets/datables/datatables.min.js"></script>
-  <script src="../assets/js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+  <script src="../../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+  <script src="../../assets/js/argon.js?v=1.1.0"></script>
   <script>
     window.TrackJS &&
       TrackJS.install({

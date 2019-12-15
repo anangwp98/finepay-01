@@ -50,16 +50,22 @@
           </div>
           <!-- Navbar items -->
           <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+              <a class="nav-link nav-link-icon" href="../index.php">
+                <i class="ni ni-tv-2"></i>
+                <span class="nav-link-inner--text">Beranda</span>
+              </a>
+            </li>
             <li class="nav-item">
               <a class="nav-link nav-link-icon" href="./register.php">
                 <i class="ni ni-circle-08"></i>
-                <span class="nav-link-inner--text">Register</span>
+                <span class="nav-link-inner--text">Daftar</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link nav-link-icon" href="./login.php">
                 <i class="ni ni-key-25"></i>
-                <span class="nav-link-inner--text">Login</span>
+                <span class="nav-link-inner--text">Masuk</span>
               </a>
             </li>
           </ul>
