@@ -117,11 +117,9 @@
               <table id="tabel-data-user" class="table align-items-center">
                 <thead class="thead-light">
                   <tr>
-                    <th scope="col">ID</th>
                     <th scope="col">Username</th>
                     <th scope="col">Nama</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Tanggal Lahir</th>
                     <th scope="col">Jenis Kelamin</th>
                     <th scope="col">Action</th>
                     
@@ -140,11 +138,10 @@
                 } else {
                   $showJK = 'Tidak Terdefinisikan';
                 }
-                  echo "<tr> <th scope='row'>" . $row["id"]."</th>
+                  echo "<tr>
                     <th scope='row'>" . $row["username"]. "</th>
                     <td>" . $row["nama"]."</td>
                     <td>".$row["email"]."</td>
-                    <td>".$row["tglLahir"]."</td>
                     <td>".$showJK."</td>
                     <td scope='row'>
                       <button type='button' class='btn btn-outline-info' data-toggle='modal' data-target='#modal-notification". $row["id"] . "'>Info</button>
