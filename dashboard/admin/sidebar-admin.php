@@ -70,6 +70,11 @@
             <a class=" nav-link " href=" ./kategori.php"> <i class="fas fa-align-left"></i> Kategori
             </a>
           </li>
+          
+          <li class="nav-item  class=" active>
+            <a class=" nav-link " href=" ./unduh.php"> <i class="fas fa-download"></i> Alamat Unduh
+            </a>
+          </li>
         </ul>
         <!-- Divider -->
         <hr class="my-3">

@@ -50,7 +50,19 @@ if(isset($_POST['simpan_user'])) {
     } else {
         echo "<script language='javascript'> alert('Data Kok Gagal Disimpan!');history.go(-1); </script>";
     }
-}else {
+}else if(isset($_POST['simpan_website'])) {
+    $nama           = $_POST['nama'];
+    $deskripsi     = $_POST['deskripsi'];
+    
+    $id_increment = rand(); 
+    $id_website="WB-".$id_increment;
+    $query="INSERT INTO `website` (`id_website`, `nama`, `deskripsi`) VALUES ('$id_website', '$nama', '$deskripsi')";
+    if(mysqli_query($koneksi, $query)) {
+         header("location:./website.php");
+    } else {
+        echo "<script language='javascript'> alert('Data Kok Gagal Disimpan!');history.go(-1); </script>";
+    }
+} else {
     echo "<script language='javascript'> alert('Data Gagal Disimpan!');history.go(-1); </script>";
 }
 ?>

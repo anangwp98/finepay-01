@@ -1,6 +1,6 @@
 
 <?php 
-include('./dashboard/koneksi.php');
+include('query.php');
 session_start();
 $nameFavicon = false;
 $login = false;

@@ -22,12 +22,11 @@ include('header.php');
           <div class="col px-0">
             <div class="row">
               <div class="col-lg-6">
-                <h1 class="display-3  text-white">A beautiful Design System<span>completed with examples</span></h1>
-                <p class="lead  text-white">The design system comes with four pre-built pages to help you get started faster. You can change the text and images and you're good to go.</p>
+                <h1 class="display-3  text-white"><?php echo $nama_website ?><span><?php echo $deskripsi_website; ?></span></h1>
                 <div class="btn-wrapper">
-                  <a href="https://demos.creative-tim.com/argon-design-system/docs/components/alerts.html" class="btn btn-info btn-icon mb-3 mb-sm-0">
+                  <a href="#" class="btn btn-info btn-icon mb-3 mb-sm-0">
                     <span class="btn-inner--icon"><i class="fa fa-code"></i></span>
-                    <span class="btn-inner--text">Components</span>
+                    <span class="btn-inner--text">Get it on Google Play</span>
                   </a>
                   <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-white btn-icon mb-3 mb-sm-0">
                     <span class="btn-inner--icon"><i class="ni ni-cloud-download-95"></i></span>

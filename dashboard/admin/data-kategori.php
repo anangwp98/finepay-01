@@ -7,7 +7,7 @@
                 <div class="col">
                   <h3 class="mb-0">Data Kategori</h3>
                   <hr>
-                  <button type="button" class="col-lg-3 btn btn-block btn-white" data-toggle="modal" data-target="#modal-kateghori-tambah"><i class="fas fa-user-plus"></i> Tambah Kategori</button>
+                  <button type="button" class="col-lg-3 btn btn-block btn-white" data-toggle="modal" data-target="#modal-kateghori-tambah"><i class="fas fa-align-left"></i> Tambah Kategori</button>
                   <div class="modal fade" id="modal-kateghori-tambah" tabindex="-1" role="dialog" aria-labelledby="modal-kateghori-tambah" aria-hidden="true">
                     <div class="modal-dialog modal- modal-dialog-centered modal-xl" role="document">
                       <div class="modal-content">
