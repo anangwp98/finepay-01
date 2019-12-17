@@ -51,6 +51,11 @@
           "lengthMenu": [ [3, 4], [3, 4] ],
           "pagingType": "numbers"
         });
+        
+        $('#tabel-data-website').DataTable({
+          "lengthMenu": [ [1], [1] ],
+          "pagingType": "numbers"
+        });
     });
   </script>
 </body>

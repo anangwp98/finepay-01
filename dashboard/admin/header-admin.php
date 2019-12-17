@@ -68,13 +68,13 @@
                       <span class="h2 font-weight-bold mb-0"><?php echo $hasil_jml_user; ?></span>
                       <?php
                         if ($view_user == true) {
-                            echo "<br>                                               
-                                <button class='btn btn-icon btn-secondary btn-card-1' type='button'>
-                                <span class='btn-inner--icon'><i class='far fa-eye'></i></span>
-
-                                <span class='btn-inner--text'>Lihat Data</span>
-
-                                </button>";
+                            echo "<br>
+                                <a href='./view-user.php'>                                              
+                                  <button class='btn btn-icon btn-secondary btn-card-1' type='button'>
+                                  <span class='btn-inner--icon'><i class='far fa-eye'></i></span>
+                                  <span class='btn-inner--text'>Lihat Data</span>
+                                  </button>
+                                </a>";
                         } else {
                           echo "<br>                                               
                                 <button class='btn  btn-icon btn-card-1' type='button' disabled>
@@ -125,19 +125,21 @@
                       <span class="h2 font-weight-bold mb-0"><?php echo $hasil_jml_barang; ?></span>
                       <?php
                         if ($view_barang == true) {
-                            echo "<br>                                               
+                            echo "<br>
+                              <a href='./view-barang.php'>                                                  
                                 <button class='btn btn-icon btn-secondary btn-card-1' type='button'>
                                 <span class='btn-inner--icon'><i class='far fa-eye'></i></span>
 
                                 <span class='btn-inner--text'>Lihat Data</span>
 
-                                </button>";
-                        } else {
+                                </button>
+                              </a>";
+                        } else if($view_barang == false){
                           echo "<br>                                               
                                 <button class='btn  btn-icon btn-card-1' type='button' disabled>
                                 <span class='btn-inner--icon'><i class='far fa-eye'></i></span>
 
-                                <span class='btn-inner--text'>Lihat Data</span>
+                                <span class='btn-inner--text'>Tidak ada data</span>
 
                                 </button>";
                         }

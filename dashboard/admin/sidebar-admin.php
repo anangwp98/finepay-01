@@ -55,7 +55,19 @@
         <!-- Navigation -->
         <ul class="navbar-nav">
           <li class="nav-item  class=" active>
-          <a class=" nav-link " href=" ../../index.php"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
+          <a class=" nav-link " href=" ./index.php"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
+            </a>
+          </li>
+          <li class="nav-item  class=" active>
+          <a class=" nav-link " href=" ../../index.php"> <i class="fas fa-globe-asia"></i> Go to Website
+            </a>
+          </li>
+          <li class="nav-item  class=" active>
+            <a class=" nav-link " href=" ./website.php"> <i class="fas fa-cogs"></i> Atur Website
+            </a>
+          </li>
+          <li class="nav-item  class=" active>
+            <a class=" nav-link " href=" ./kategori.php"> <i class="fas fa-align-left"></i> Kategori
             </a>
           </li>
         </ul>

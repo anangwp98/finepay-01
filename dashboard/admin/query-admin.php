@@ -22,12 +22,13 @@ if(!isset($_SESSION['username'])){
   $sql_jml_barang= mysqli_query($koneksi, $query_jml_barang );
   $jml_barang  = mysqli_fetch_array($sql_jml_barang);
 
+  $query_jml_website = "SELECT COUNT(*) AS 'Jumlah' FROM website";
+  $sql_jml_website= mysqli_query($koneksi, $query_jml_website );
+  $jml_website  = mysqli_fetch_array($sql_jml_website);
+
   $view_user = false;  
   $cek_data_user = mysqli_num_rows($query1_jml_user);
-  if($cek_data_user == NULL) {
-      $hasil_jml_user = "Maaf, data tidak ada";
-      $view_user = false;
-  } else if ($cek_data_user > 0){
+   if ($cek_data_user > 0){
       $hasil_jml_user = $jumlah_data_user['Jumlah'];
       $view_user = true;
   } else if ($cek_data_user == 0) {
@@ -37,16 +38,26 @@ if(!isset($_SESSION['username'])){
       echo "Gagal mendapatkan data";
   }
 
+  $view_barang = false;
   $cek_data_barang = mysqli_num_rows($sql_jml_barang);
-  if($cek_data_barang == NULL) {
-      $hasil_jml_barang = "Maaf, data tidak ada";
-      $view_barang = false;
-  } else if ($cek_data_barang > 0){
+  if ($cek_data_barang > 0){
       $hasil_jml_barang = $jml_barang['Jumlah'];
       $view_barang = true;
-  } else if ($cek_data_barang == 0) {
-      $hasil_jml_barang = '0';
+  } else if ($cek_data_barang < 1) {
+      $hasil_jml_barang = '-';
       $view_barang = true;
+  } else {
+      echo "Gagal mendapatkan data";
+  }
+ 
+  $cek_data_website = mysqli_num_rows($sql_jml_website);
+  if ($cek_data_website > 0){
+      $hasil_jml_website = $jml_website['Jumlah'];
+      if($jml_website['Jumlah'] == 0) {
+          $view_website = true;
+      } else {
+          $view_website = false;
+      }
   } else {
       echo "Gagal mendapatkan data";
   }

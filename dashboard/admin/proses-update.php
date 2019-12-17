@@ -9,6 +9,11 @@ if(isset($_POST['update'])){
     $alamat         = $_POST['alamat'];
     $query = "UPDATE `users` SET `nama`='$nama', `email`='$email',  `jk`='$jk', `tglLahir`='$tglLahir', `alamat`='$alamat' WHERE `users`.`id`='$id'";
     if(mysqli_query($koneksi, $query)) {
+			$_SESSION['nama'] = $nama;
+			$_SESSION['email'] = $email;
+			$_SESSION['tglLahir'] = $tglLahir;
+			$_SESSION['alamat'] = $alamat;
+			$_SESSION['jk'] = $jk;
         header("location: profil-admin.php");
     } else {
         echo"<script language='javascript'> alert('Query Salah! Data Gagal Disimpan!');history.go(-1); </script>";
