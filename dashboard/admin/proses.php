@@ -50,7 +50,7 @@ if(isset($_POST['simpan_user'])) {
     } else {
         echo "<script language='javascript'> alert('Data Kok Gagal Disimpan!');history.go(-1); </script>";
     }
-}else if(isset($_POST['simpan_website'])) {
+} else if(isset($_POST['simpan_website'])) {
     $nama           = $_POST['nama'];
     $deskripsi     = $_POST['deskripsi'];
     
@@ -59,6 +59,19 @@ if(isset($_POST['simpan_user'])) {
     $query="INSERT INTO `website` (`id_website`, `nama`, `deskripsi`) VALUES ('$id_website', '$nama', '$deskripsi')";
     if(mysqli_query($koneksi, $query)) {
          header("location:./website.php");
+    } else {
+        echo "<script language='javascript'> alert('Data Kok Gagal Disimpan!');history.go(-1); </script>";
+    }
+} else if(isset($_POST['simpan_link_download'])) {
+    $nama           = $_POST['nama'];
+    $link           = $_POST['link'];
+    $icon           = $_POST['icon'];
+    
+    $id_increment = rand(); 
+    $id_unduh="DW-".$id_increment;
+    $query="INSERT INTO `download` (`id_download`, `nama`, `link`, `icon`) VALUES ('$id_unduh', '$nama', '$link', '$icon')";
+    if(mysqli_query($koneksi, $query)) {
+         header("location:./view-unduh.php");
     } else {
         echo "<script language='javascript'> alert('Data Kok Gagal Disimpan!');history.go(-1); </script>";
     }

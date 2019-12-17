@@ -24,14 +24,23 @@ include('header.php');
               <div class="col-lg-6">
                 <h1 class="display-3  text-white"><?php echo $nama_website ?><span><?php echo $deskripsi_website; ?></span></h1>
                 <div class="btn-wrapper">
-                  <a href="#" class="btn btn-info btn-icon mb-3 mb-sm-0">
-                    <span class="btn-inner--icon"><i class="fa fa-code"></i></span>
-                    <span class="btn-inner--text">Get it on Google Play</span>
-                  </a>
-                  <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-white btn-icon mb-3 mb-sm-0">
-                    <span class="btn-inner--icon"><i class="ni ni-cloud-download-95"></i></span>
-                    <span class="btn-inner--text">Download HTML</span>
-                  </a>
+                  <?php
+                  if($cek_data_unduh > 0) {
+                    while($unduh_nama = mysqli_fetch_assoc($data_unduh)){
+                    $nama_link          = $unduh_nama['nama'];
+                    $alamat_unduh       = $unduh_nama['link'];
+                    $icon_unduh         = $unduh_nama['icon'];
+                ?>
+                    <a href="//<?php echo $alamat_unduh ?>" class="btn btn-info btn-icon mb-3 mb-sm-0" target="_blank">
+                      <span class="btn-inner--icon"><?php echo $icon_unduh; ?></span>
+                      <span class="btn-inner--text"><?php echo $nama_link; ?></span>
+                    </a>
+                <?php 
+                  };
+                } else {
+                   echo "shausa";
+                }
+                   ?>
                 </div>
               </div>
             </div>

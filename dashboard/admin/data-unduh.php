@@ -85,8 +85,8 @@
                     <td>" . $row["icon"]."</td>
                     <td>".$row["link"]."</td>
                     <td scope='row'>
-                      <button type='button' class='btn btn-outline-info' data-toggle='modal' data-target='#modal-notification". $row["id_download"] . "'>Lihat</button>
-                      <button type='button' class='btn btn-outline-danger' data-toggle='modal' data-target='#modal-hapus". $row["id_download"] . "'>Hapus</button>
+                      <button type='button' class='btn btn-outline-info' data-toggle='modal' data-target='#modal-notification-download". $row["id_download"] . "'>Lihat</button>
+                      <button type='button' class='btn btn-outline-danger' data-toggle='modal' data-target='#modal-hapus-download". $row["id_download"] . "'>Hapus</button>
                     </td>
                   </tr>"; ?>
                   
@@ -95,7 +95,7 @@
                         SCRIPT UNTUK MENAMPILKAN MODAL VIEW
                 ======================================================================================
                 -->
-                  <div class="modal fade" id="modal-notification<?php echo $row["id_download"]; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+                  <div class="modal fade" id="modal-notification-download<?php echo $row["id_download"]; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
                     <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                       <div class="modal-content">    
                         <div class="modal-header">
@@ -129,7 +129,7 @@
                         SCRIPT UNTUK MENAMPILKAN MODAL HAPUS
                 ======================================================================================
                 -->
-                <div class="modal fade" id="modal-hapus<?php echo $row["id_download"]; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-1-hapus" aria-hidden="true">
+                <div class="modal fade" id="modal-hapus-download<?php echo $row["id_download"]; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-1-hapus" aria-hidden="true">
                   <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
                     <div class="modal-content bg-gradient-danger">
                       <div class="modal-header">
@@ -144,7 +144,7 @@
                         </div>    
                       </div>
                       <div class="modal-footer">
-                      <a href="hapus_unduh.php?id=<?php echo $row['id_download']; ?>"><button type="button" class="btn btn-white">HAPUS</button></a>
+                      <a href="hapus-unduh.php?id=<?php echo $row['id_download']; ?>"><button type="button" class="btn btn-white">HAPUS</button></a>
                         <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Batal</button> 
                       </div> 
                     </div>
