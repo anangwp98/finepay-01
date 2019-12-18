@@ -66,10 +66,11 @@ if(isset($_POST['simpan_user'])) {
     $nama           = $_POST['nama'];
     $link           = $_POST['link'];
     $icon           = $_POST['icon'];
+    $warna          = $_POST['warna'];
     
     $id_increment = rand(); 
     $id_unduh="DW-".$id_increment;
-    $query="INSERT INTO `download` (`id_download`, `nama`, `link`, `icon`) VALUES ('$id_unduh', '$nama', '$link', '$icon')";
+    $query="INSERT INTO `download` (`id_download`, `nama`, `link`, `icon`, `warna`) VALUES ('$id_unduh', '$nama', '$link', '$icon','$warna')";
     if(mysqli_query($koneksi, $query)) {
          header("location:./view-unduh.php");
     } else {

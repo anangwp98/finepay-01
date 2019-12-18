@@ -14,7 +14,11 @@
                         <div class="modal-body p-0">
                           <div class="card bg-secondary shadow border-0">
                             <div class="card-header bg-transparent pb-0">
-                              <div class="text-muted text-center mt-2 mb-3"><small>Masukkan Data Alamat Unduh Anda</small></div>
+                              <div class="text-muted text-center mt-2 mb-3">
+                                <small>Masukkan Data Alamat Unduh Anda</small>
+                                <br>
+                                <small>Lihat icon yang bisa kamu gunakan : <a href="https://fontawesome.com/v4.7.0/icons/" target="_blank">Font Awesome</a></small>
+                              </div>
                                 <div class="card-body px-lg-5 py-lg-5">
                                   <form action="./proses.php" method="POST">
                                     <div class="form-group mb-3">
@@ -42,6 +46,15 @@
                                         <input class="form-control" placeholder="icon ex: <i class='fab fa-app-store'></i>" type="text" name="icon">
                                       </div>
                                     </div>
+                                    
+                                    <div class="form-group mb-3">
+                                      <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"><i class="fas fa-palette"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="warna ex: btn-white | btn-primary" type="text" name="warna">
+                                      </div>
+                                    </div>
                                     <div class="text-center">
                                       <input type="submit" name="simpan_link_download" class="btn btn-primary my-4" value="Proses">
                                     </div>
@@ -60,7 +73,7 @@
 
             <?php
 
-            $data_link = "SELECT * FROM `download`";
+            $data_link = "SELECT * FROM `download` LIMIT 2";
             $hasil_link = mysqli_query($koneksi, $data_link); 
 
             $total_record_link = mysqli_num_rows($hasil_link);

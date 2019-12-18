@@ -35,11 +35,13 @@ if(isset($_SESSION['username'])) {
   <link href="./assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
   
   <link href="./assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  
+  <link href="./assets/css/style.css" rel="stylesheet">
   <!-- Argon CSS -->
   <link type="text/css" href="./assets/css/argon.css?v=1.1.0" rel="stylesheet">
 </head>
 <body>
-  <header class="header-global">
+  <header class="header-global header-z-index">
     <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom">
       <div class="container">
         <a class="navbar-brand mr-lg-5" href="./index.php">

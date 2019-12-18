@@ -78,7 +78,7 @@
                           <label class="custom-control-label" for="L">Laki-Laki</label>
                         </div>
                         <div class="custom-control custom-radio mb-3">
-                          <input type="radio" name="jenkel" class="custom-control-input" id="P" value="L" <?php if($_SESSION['jk']=="P"){ echo "checked";}?>/>
+                          <input type="radio" name="jenkel" class="custom-control-input" id="P" value="P" <?php if($_SESSION['jk']=="P"){ echo "checked";}?>/>
                           <label class="custom-control-label" for="P">Perempuan</label>
                         </div>
                       </div>

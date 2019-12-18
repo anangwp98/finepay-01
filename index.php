@@ -30,15 +30,16 @@ include('header.php');
                     $nama_link          = $unduh_nama['nama'];
                     $alamat_unduh       = $unduh_nama['link'];
                     $icon_unduh         = $unduh_nama['icon'];
+                    $warna              = $unduh_nama['warna'];
                 ?>
-                    <a href="//<?php echo $alamat_unduh ?>" class="btn btn-info btn-icon mb-3 mb-sm-0" target="_blank">
+                    <a href="//<?php echo $alamat_unduh ?>" class="btn <?php echo $warna ?> btn-icon mb-3 mb-sm-0" target="_blank">
                       <span class="btn-inner--icon"><?php echo $icon_unduh; ?></span>
                       <span class="btn-inner--text"><?php echo $nama_link; ?></span>
                     </a>
                 <?php 
                   };
                 } else {
-                   echo "shausa";
+                   
                 }
                    ?>
                 </div>
