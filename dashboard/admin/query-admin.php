@@ -6,10 +6,6 @@ if(!isset($_SESSION['username'])){
 	header("location:./../index.php");
 } else {
 
-  $sql_jml_admin = "SELECT count(*) as Jumlah from users WHERE level='admin'";
-  $query1_jml_admin= mysqli_query($koneksi, $sql_jml_admin );
-  $jumlah_data_admin = mysqli_fetch_array($query1_jml_admin);
-
   $sql_jml_user = "SELECT count(*) as Jumlah from users WHERE level='user'";
   $query1_jml_user= mysqli_query($koneksi, $sql_jml_user );
   $jumlah_data_user = mysqli_fetch_array($query1_jml_user);
@@ -57,6 +53,23 @@ if(!isset($_SESSION['username'])){
           $view_website = true;
       } else {
           $view_website = false;
+      }
+  } else {
+      echo "Gagal mendapatkan data";
+  }
+
+  
+  $query_jml_topup = "SELECT COUNT(*) AS 'Jumlah' FROM topup";
+  $sql_jml_topup= mysqli_query($koneksi, $query_jml_topup );
+  $jml_topup  = mysqli_fetch_array($sql_jml_topup);
+
+  $cek_data_topup = mysqli_num_rows($sql_jml_topup);
+  if ($cek_data_topup > 0){
+      $hasil_jml_topup = $jml_topup['Jumlah'];
+      if($jml_topup['Jumlah'] == 0) {
+          $view_topup = true;
+      } else {
+          $view_topup = false;
       }
   } else {
       echo "Gagal mendapatkan data";

@@ -51,7 +51,7 @@
                   </div>
                   <?php 
                   } else {
-                    echo "Your Button is Locked!";
+                    echo "Nama website sudah berhasil diatur!";
                   }
                    ?>
                 </div>
@@ -172,3 +172,4 @@
           </div>
         </div>
       </div>
+    </div>

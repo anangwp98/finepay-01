@@ -47,8 +47,29 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Jumlah Admin</h5>
-                      <span class="h2 font-weight-bold mb-0"><?php echo $jumlah_data_admin['Jumlah']?></span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Jumlah Top Up</h5>
+                      <span class="h2 font-weight-bold mb-0"><?php echo $hasil_jml_topup; ?></span>
+                      <span class="h2 font-weight-bold mb-0">
+                      <?php
+                        if ($view_user == true) {
+                            echo "<br>
+                                <a href='./view-topup.php'>                                              
+                                  <button class='btn btn-icon btn-secondary btn-card-1' type='button'>
+                                  <span class='btn-inner--icon'><i class='far fa-eye'></i></span>
+                                  <span class='btn-inner--text'>Lihat Data</span>
+                                  </button>
+                                </a>";
+                        } else {
+                          echo "<br>                                               
+                                <button class='btn  btn-icon btn-card-1' type='button' disabled>
+                                <span class='btn-inner--icon'><i class='far fa-eye'></i></span>
+
+                                <span class='btn-inner--text'>Lihat Data</span>
+
+                                </button>";
+                        }
+                      ?>  
+                      </span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-danger text-white rounded-circle shadow">

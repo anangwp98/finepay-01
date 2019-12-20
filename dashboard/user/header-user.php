@@ -270,9 +270,16 @@ if(!isset($_SESSION['username'])){
                                                     <input class='form-control' placeholder='id' type='hidden' name='id'>
                                                     <input class='form-control' placeholder='Nominal' type='text' name='nominal'>
                                                   </div>
+                                                  <br>
+                                                  <div class='input-group input-group-alternative'>
+                                                    <div class='input-group-prepend'>
+                                                      <span class='input-group-text'><i class='fas fa-archive'></i></span>
+                                                    </div>
+                                                    <input class='form-control' placeholder='Keterangan' type='text' name='keterangan'>
+                                                  </div>
                                                 </div>
                                                 <div class='text-center'>
-                                                  <input type='submit' name='simpan_barang' class='btn btn-primary my-4' value='Proses'>
+                                                  <input type='submit' name='input_topup' class='btn btn-primary my-4' value='Proses'>
                                                 </div>
                                               </div>
                                             </form>
