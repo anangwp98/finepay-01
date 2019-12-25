@@ -7,7 +7,17 @@
                 <div class="col">
                   <h3 class="mb-0">Data Unduh Sistem</h3>
                   <hr>
+                  <?php
+                  
+                  if($view_unduh == true) {
+                  ?>
                   <button type="button" class="col-lg-3 btn btn-block btn-white" data-toggle="modal" data-target="#modal-download-tambah"><i class="fas fa-search-plus"></i> Tambah Alamat Unduh</button>
+                  <?php
+                  } else {
+                    echo "This button is locked!";
+                  }
+                  
+                  ?>
                   <div class="modal fade" id="modal-download-tambah" tabindex="-1" role="dialog" aria-labelledby="modal-download-tambah" aria-hidden="true">
                     <div class="modal-dialog modal- modal-dialog-centered modal-xl" role="document">
                       <div class="modal-content">

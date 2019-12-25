@@ -5,6 +5,7 @@ include('../koneksi.php');
 if(!isset($_SESSION['username'])){
 	header("location:./../index.php");
 } else {
+    include('query-user.php');
     $sql_view_saldo = "SELECT dompet.saldo as 'jmlsaldo' FROM `dompet` JOIN users ON users.id=dompet.id_user WHERE id_user='$_SESSION[id]'";
     $query_view_saldo= mysqli_query($koneksi, $sql_view_saldo );
     $jml_saldo = mysqli_fetch_array($query_view_saldo);
@@ -59,7 +60,7 @@ if(!isset($_SESSION['username'])){
       </button>
       <!-- Brand -->
       <a class="navbar-brand pt-0" href="../index.html">
-        <img src="../assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+        <img src="../assets/img/brand/logo_finepay.png" class="navbar-brand-img" alt="...">
       </a>
       <!-- User -->
       <!-- Collapse -->
@@ -69,7 +70,7 @@ if(!isset($_SESSION['username'])){
           <div class="row">
             <div class="col-6 collapse-brand">
               <a href="../index.html">
-                <img src="../assets/img/brand/blue.png">
+                <img src="../assets/img/brand/logo_finepay.png">
               </a>
             </div>
             <div class="col-6 collapse-close">
@@ -94,39 +95,20 @@ if(!isset($_SESSION['username'])){
         <!-- Navigation -->
         <ul class="navbar-nav">
           <li class="nav-item  class=" active" ">
-          <a class=" nav-link active " href=" ../../index.html"> <i class="ni ni-tv-2 text-primary"></i> Website
+          <a class=" nav-link  " href=" ./index.php"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link " href="../examples/icons.html">
-              <i class="ni ni-planet text-blue"></i> Icons
+          <li class="nav-item  class=" active" ">
+          <a class=" nav-link  " href=" ./view-pesanan.php"> <i class="fas fa-luggage-cart"></i> Pesanan Saya
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link " href="../examples/maps.html">
-              <i class="ni ni-pin-3 text-orange"></i> Maps
+          
+          <li class="nav-item  class=" active" ">
+          <a class=" nav-link  " href=" ./view-barang.php"> <i class="fas fa-boxes"></i> Data Barang
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link " href="../examples/profile.html">
-              <i class="ni ni-single-02 text-yellow"></i> User profile
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="../examples/tables.html">
-              <i class="ni ni-bullet-list-67 text-red"></i> Tables
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./login.html">
-              <i class="ni ni-key-25 text-info"></i> Login
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./examples/register.html">
-              <i class="ni ni-circle-08 text-pink"></i> Register
-            </a>
-          </li>
+          
+          
         </ul>
         <!-- Divider -->
         <hr class="my-3">
@@ -232,7 +214,7 @@ if(!isset($_SESSION['username'])){
               <div class="card card-stats mb-4 mb-xl-0">
                 <div class="card-body">
                   <div class="row">
-                    <div class="col">
+                    <div class="col"> 
                       <h5 class="card-title text-uppercase text-muted mb-0">Saldo Saya</h5>
                       <span class="font-weight-bold mb-0 font-biru"><?php echo $a; ?></span>
                       <?php
@@ -309,8 +291,8 @@ if(!isset($_SESSION['username'])){
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Top Up</h5>
-                      <span class="h2 font-weight-bold mb-0">924</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Jatuh Tempo</h5>
+                      <span class="h2 font-weight-bold mb-0">On Dev.</span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -325,20 +307,47 @@ if(!isset($_SESSION['username'])){
               <div class="card card-stats mb-4 mb-xl-0">
                 <div class="card-body">
                   <div class="row">
+                  <?php
+                  if($view_pesanan == true) {
+                    while($row_pesan = mysqli_fetch_assoc($sql_cek_pesanan)) {
+                  ?>
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Ajukan Barang</h5>
-                      <span class="h2 font-weight-bold mb-0">49,65%</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Barang Kamu</h5>
+                      <span class="h2 font-weight-bold mb-0"><?php echo  $row_pesan['nama_barang']; ?></span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-info text-white rounded-circle shadow">
                         <i class="fas fa-percent"></i>
                       </div>
                     </div>
-                  </div>
-                  <p class="mt-3 mb-0 text-muted text-sm">
-                    <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
-                    <span class="text-nowrap">Since last month</span>
+                    <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-success mr-2">Status : </span>
+                    <span class="text-nowrap"><?php echo $row_pesan['ket_pesanan']; ?></span>
                   </p>
+                    <?php }
+                  } else if($view_pesanan == false) {
+                  ?>
+                  <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Ajukan Barang Kamu</h5>
+                      <span class="h2 font-weight-bold mb-0">
+                      </span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                        <i class="fas fa-percent"></i>
+                      </div>
+                    </div>
+                    <a href='view-data-barang.php'>
+                      <button class='btn btn-icon btn-info btn-card-1' type='button'>
+                        <span class='btn-inner--icon'><i class='fas fa-plus'></i></span>
+                        <span class='btn-inner--text'>Ajukan Sekarang</span>
+                      </button>
+                      </a>
+                  <?php 
+                  }
+                  ?>
+                    
+                  </div>
                 </div>
               </div>
             </div>

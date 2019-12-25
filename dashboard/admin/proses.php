@@ -76,6 +76,18 @@ if(isset($_POST['simpan_user'])) {
     } else {
         echo "<script language='javascript'> alert('Data Kok Gagal Disimpan!');history.go(-1); </script>";
     }
+} else if(isset($_POST['simpan_dompet'])) {
+    $nama           = $_POST['nama'];
+    $id_user        = $_SESSION['id'];
+    $saldo          = 0;
+    $id_increment = rand(); 
+    $id_dompet="WL-".$id_increment;
+    $query="INSERT INTO `dompet` (`id_dompet`, `id_user`, `jenis_dompet`, `saldo`) VALUES ('$id_dompet', '$id_user', '$nama', '$saldo')";
+    if(mysqli_query($koneksi, $query)) {
+         header("location:./index.php");
+    } else {
+        echo "<script language='javascript'> alert('Data Kok Gagal Disimpan!');history.go(-1); </script>";
+    }
 } else {
     echo "<script language='javascript'> alert('Data Gagal Disimpan!');history.go(-1); </script>";
 }

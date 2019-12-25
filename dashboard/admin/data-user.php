@@ -55,7 +55,17 @@
                                         <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="dd/mm/YYYY" type="date" name="tglLahir">
+                                        <input class="form-control datepicker" placeholder="dd/mm/YYYY" type="text" name="tglLahir">
+                                      </div>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                    
+                                    <label for="tahunAngkatan">Tahun Angkatan</label>
+                                      <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                                        </div>
+                                        <input class="form-control datepicker" for="tahunAngkatan" placeholder="Tahun Angkatan" type="text" name="tahunAngkatan">
                                       </div>
                                     </div>
                                     <div class="custom-control custom-radio mb-3">
@@ -108,7 +118,7 @@
 
             <?php
 
-            $data_admin = "SELECT * FROM users WHERE level='user'";
+            $data_admin = "SELECT id, username, nama, email, password, DATE_FORMAT(tglLahir, '%M %d %Y') as tglLahir, jk, alamat, angkatan, nomorTelp, level FROM users WHERE level='user'";
             $hasil_admin = mysqli_query($koneksi, $data_admin); 
 
             $total_record_admin = mysqli_num_rows($hasil_admin);
@@ -146,6 +156,8 @@
                     <td scope='row'>
                       <button type='button' class='btn btn-outline-info' data-toggle='modal' data-target='#modal-notification". $row["id"] . "'>Info</button>
                       <button type='button' class='btn btn-outline-danger' data-toggle='modal' data-target='#modal-hapus". $row["id"] . "'>Hapus</button>
+                      
+                      <button type='button' class='btn btn-success' data-toggle='modal' data-target='#modal-edit". $row["id"] . "'>Edit</button>
                     </td>
                   </tr>"; ?>
                   
@@ -193,6 +205,63 @@
                         SCRIPT AKHIR MENAMPILKAN MODAL
                 ======================================================================================
                 --> 
+
+                <!--
+                ======================================================================================
+                        SCRIPT UNTUK MENAMPILKAN MODAL VIEW UPDATE
+                ======================================================================================
+                -->
+                
+              <form action="proses-update.php" method="POST">
+                <div class="modal fade" id="modal-edit<?php echo $row["id"]; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-edit" aria-hidden="true">
+                    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                      <div class="modal-content">    
+                        <div class="modal-header">
+                          <h2 class="modal-title" id="modal-title-edit">ID - <?php echo $row["id"] ?></h2>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                          </button>
+                         </div>
+                         <div class="modal-body">          
+                            <div class="py-3 text-center">
+                              <h3>Nama : </h3>
+                              <input class="form-control text-center is-valid" placeholder="Nama Lengkap" type="text" value="<?php echo $row['nama'] ?>" name="nama">
+                              <br>
+                              <h3>Email : </h3>
+                              <input class="form-control text-center is-valid" placeholder="Email" type="text" value="<?php echo $row['email'] ?>" name="email">
+                              <br>
+                              <h3>Tanggal Lahir : </h3>
+                              <input class="form-control text-center datepicker is-valid" placeholder="Tanggal Lahir" type="text" value="<?php echo $row['tglLahir'] ?>" name="tglLahir">
+                              <br>
+                              <h3>Angkatan (Year) : </h3>
+                              <input class="form-control text-center datepicker is-valid" placeholder="Angkatan" type="text" value="<?php echo $row['angkatan'] ?>" name="angkatan">
+                              <br>
+                              <h3>Jenis Kelamin : </h3>
+                              <input class="form-control text-center is-valid" placeholder="L/P" type="text" value="<?php echo $row['jk'] ?>" name="jk">
+                              <br>
+                              <h3>Alamat : </h3>
+                              <textarea rows="4" name="alamat " placeholder="Alamat Lengkap" class="form-control form-control-alternative is-valid"><?php echo $row['alamat']; ?></textarea>
+                              <br>
+                              <h3>Telepon : </h3>
+                              <input class="form-control text-center is-valid" placeholder="Nomor Telepon" type="text" value="<?php echo $row['nomorTelp'] ?>" name="notelp">
+                              </div>
+                              
+                              <input type="submit" value="Update" name="updateUser" class="btn btn-primary">
+                              <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button> 
+                             </div> 
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <!--
+                ======================================================================================
+                        SCRIPT AKHIR MENAMPILKAN MODAL UPDATE
+                ======================================================================================
+                --> 
+
                 <!--
                 ======================================================================================
                         SCRIPT UNTUK MENAMPILKAN MODAL HAPUS

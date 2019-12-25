@@ -30,6 +30,28 @@
       <div class="container-fluid">
         <!-- Brand -->
         <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.php">Dashboard</a>
+        
+        <?php
+        if($showCreateDompet_admin == true) {
+        ?>
+          <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#modal-buat-dompet">
+          <span>Buat Dompet Sekarang</span>
+          <span class="badge badge-white"><?php echo $a ?></span>
+          </button>
+        <?php 
+        } else if($showCreateDompet_admin == false) {
+        ?>
+          <button type="button" class="btn btn-primary" disabled>
+          <span><?php echo $a ?></span>
+          </button>
+          <button type="button" class="btn btn-success"   data-toggle="modal" data-target="#modal-topup-dompet">
+          <span>Top Up</span>
+          </button>
+        <?php 
+        }
+        ?>
+                  
+        
         <!-- User -->
         <?php include('dropdown-admin.php'); ?>
       </div>
@@ -121,8 +143,8 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Saldo User</h5>
-                      <span class="h2 font-weight-bold mb-0"><?php echo $jml_saldo['jml_saldo']; ?></span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Total Saldo User</h5>
+                      <span class="h2 font-weight-bold mb-0"><?php echo "RP. ".$jml_saldo['jml_saldo'].",-" ?></span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -179,3 +201,61 @@
         </div>
       </div>
     </div>
+                  <div class="modal fade" id="modal-buat-dompet" tabindex="-1" role="dialog" aria-labelledby="modal-buat-dompet" aria-hidden="true">
+                    <div class="modal-dialog modal- modal-dialog-centered modal-xl" role="document">
+                      <div class="modal-content">
+                        <div class="modal-body p-0">
+                          <div class="card bg-secondary shadow border-0">
+                            <div class="card-header bg-transparent pb-0">
+                              <div class="text-muted text-center mt-2 mb-3"><small>Masukkan Data</small></div>
+                                <div class="card-body px-lg-5 py-lg-5">
+                                  <form action="./proses.php" method="POST">
+                                    <div class="form-group mb-3">
+                                      <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"><i class="fas fa-archive"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="username" type="hidden" name="id">
+                                        <input class="form-control" placeholder="Nama Dompet" type="text" name="nama">
+                                      </div>
+                                    </div>
+                                    <div class="text-center">
+                                      <input type="submit" name="simpan_dompet" class="btn btn-primary my-4" value="Proses">
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal fade" id="modal-topup-dompet" tabindex="-1" role="dialog" aria-labelledby="modal-topup-dompet" aria-hidden="true">
+                    <div class="modal-dialog modal- modal-dialog-centered modal-xl" role="document">
+                      <div class="modal-content">
+                        <div class="modal-body p-0">
+                          <div class="card bg-secondary shadow border-0">
+                            <div class="card-header bg-transparent pb-0">
+                              <div class="text-muted text-center mt-2 mb-3"><small>Masukkan Data</small></div>
+                                <div class="card-body px-lg-5 py-lg-5">
+                                  <form action="./proses-update.php" method="POST">
+                                    <div class="form-group mb-3">
+                                      <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"><i class="fas fa-archive"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="username" type="hidden" name="id">
+                                        <input class="form-control" placeholder="Jumlah Top Up" type="text" name="jmltoup">
+                                      </div>
+                                    </div>
+                                    <div class="text-center">
+                                      <input type="submit" name="topupAdmin" class="btn btn-primary my-4" value="Proses">
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
