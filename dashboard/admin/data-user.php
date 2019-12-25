@@ -65,7 +65,7 @@
                                         <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
                                         </div>
-                                        <input class="form-control datepicker" for="tahunAngkatan" placeholder="Tahun Angkatan" type="text" name="tahunAngkatan">
+                                        <input class="form-control" for="tahunAngkatan" placeholder="Tahun Angkatan" type="text" name="tahunAngkatan">
                                       </div>
                                     </div>
                                     <div class="custom-control custom-radio mb-3">

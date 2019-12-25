@@ -77,7 +77,7 @@ if(isset($_POST['update'])){
     }
     
 
-}else if(isset($_POST['prosesPesanan'])){
+} else if(isset($_POST['prosesPesanan'])){
     $id                 = $_POST['id_pesanan'];
     $status             = "ACCEPTED";
     $query = "UPDATE `pesanan` SET `ket_pesanan`='$status' WHERE `id_pesanan`='$id'";
@@ -86,7 +86,15 @@ if(isset($_POST['update'])){
     } else {
         echo"<script language='javascript'> alert('Query Salah! Data Gagal Disimpan!');history.go(-1); </script>";
     }
-        echo $id;
+} else if(isset($_POST['prosesTolakPesanan'])){
+    $id                 = $_POST['id_pesanan'];
+    $status             = "DECLINE";
+    $query = "UPDATE `pesanan` SET `ket_pesanan`='$status' WHERE `id_pesanan`='$id'";
+    if(mysqli_query($koneksi, $query)) {
+        header("location: ./view-pesanan.php");
+    } else {
+        echo"<script language='javascript'> alert('Query Salah! Data Gagal Disimpan!');history.go(-1); </script>";
+    }
 } else {
     echo "<script language='javascript'> alert('Data Gagal Disimpan!');history.go(-1); </script>";
 }

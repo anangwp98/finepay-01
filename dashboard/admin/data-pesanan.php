@@ -46,7 +46,7 @@
                     <td>".$row["tanggal"]."</td>
                     <td scope='row'>
                       <a href='view-proses-pesanan.php?id=".$row['id_pesanan']."'><button type='button' class='btn btn-outline-info'>Proses</button></a>
-                      <a href='view-batal-pesanan.php?id=".$row['id_pesanan']."'><button type='button' class='btn btn-outline-danger'>Proses</button></a>
+                      <a href='view-tolak-pesanan.php?id=".$row['id_pesanan']."'><button type='button' class='btn btn-outline-danger'>Proses</button></a>
                     </td>
                   </tr>"; ?>
         <?php };

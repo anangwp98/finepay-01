@@ -86,8 +86,8 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="ni ni-ui-04"></i> Atur Klasifikasi
+            <a class="nav-link" href="./ai-view-klasifikasi-data.php">
+              <i class="ni ni-ui-04"></i> Data Klasifikasi
             </a>
           </li>
         </ul>

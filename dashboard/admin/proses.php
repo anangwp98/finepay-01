@@ -7,6 +7,7 @@ if(isset($_POST['simpan_user'])) {
     $password           = md5($_POST['password']);
     $email              = $_POST['email'];
     $tglLahir           = $_POST['tglLahir'];
+    $angkatan           = $_POST['tahunAngkatan'];
     $jk                 = $_POST['jenkel'];
     $alamat             = $_POST['alamat'];
     $telp               = $_POST['telp'];
@@ -18,7 +19,7 @@ if(isset($_POST['simpan_user'])) {
     
     $date = date('dmY-Hi');
     $id="FN".$new_auto_increment.$date;
-    $query="INSERT INTO `users` (`id`, `username`, `nama`, `email`, `password`, `tglLahir`, `jk`, `alamat`, `nomorTelp`, `level`) VALUES ('$id', '$low_username', '$nama', '$email', '$password', '$tglLahir', '$jk', '$alamat', '$telp', '$level')";
+    $query="INSERT INTO `users` (`id`, `username`, `nama`, `email`, `password`, `tglLahir`,`angkatan`, `jk`, `alamat`, `nomorTelp`, `level`) VALUES ('$id', '$low_username', '$nama', '$email', '$password', '$tglLahir', '$angkatan','$jk', '$alamat', '$telp', '$level')";
     if(mysqli_query($koneksi, $query)) {
         header("location:./view-user.php");
     } else {
@@ -85,6 +86,66 @@ if(isset($_POST['simpan_user'])) {
     $query="INSERT INTO `dompet` (`id_dompet`, `id_user`, `jenis_dompet`, `saldo`) VALUES ('$id_dompet', '$id_user', '$nama', '$saldo')";
     if(mysqli_query($koneksi, $query)) {
          header("location:./index.php");
+    } else {
+        echo "<script language='javascript'> alert('Data Kok Gagal Disimpan!');history.go(-1); </script>";
+    }
+} else if(isset($_POST['prosesKlasifikasi'])) {
+
+    $id = $_POST['id_pesanan'];
+    $keterangan_hasil = $_POST['status'];
+     
+    $tahun_atas = $_POST['tahun_atas'];
+    $tahun_bawah = $_POST['tahun_bawah'];
+    $hasil_bagi_tahun = $tahun_atas-$tahun_bawah;
+    $klasifikasi_tahun = (1/3)*$hasil_bagi_tahun;
+   
+    $angkatan_user = $_POST['angkatan'];
+    if($angkatan_user >= $tahun_atas){
+        $klasifikasi_tahun_hasil = "Muda";
+    } else if($angkatan_user>= $tahun_atas-(2*$klasifikasi_tahun)){
+        $klasifikasi_tahun_hasil = "Menengah";
+
+    } else if($angkatan_user< $tahun_atas-(2*$klasifikasi_tahun)){
+        $klasifikasi_tahun_hasil = "Tua";
+
+    }
+
+    $dp_atas = $_POST['uang_muka_atas'];
+    $dp_bawah = $_POST['uang_muka_bawah'];
+    $hasil_bagi_dp = $dp_atas-$dp_bawah;
+    $klasifikasi_dp = (1/3)*$hasil_bagi_dp;
+   
+    $dp_user = $_POST['jml_dp'];
+    if($dp_user <= $dp_bawah){
+        $klasifikasi_dp_hasil = "Rendah";
+    } else if($dp_user> $dp_bawah){
+        $klasifikasi_dp_hasil = "Tinggi";
+    }
+
+    $harga_barang_user = $_POST['hrg_barang'];
+    if($harga_barang_user <= 4000000){
+        $klasifikasi_harga_barang_hasil = "Kecil";
+    } else if($harga_barang_user <= 8000000){
+        $klasifikasi_harga_barang_hasil = "Sedang";
+    } else if($harga_barang_user > 8000000){
+        $klasifikasi_harga_barang_hasil = "Besar";
+    }
+
+    
+    $jml_bulan_user = $_POST['lama_waktu'];
+    if($jml_bulan_user <= 8){
+        $klasifikasi_jml_bulan_hasil = "Pendek";
+    } else if($jml_bulan_user <= 16){
+        $klasifikasi_jml_bulan_hasil = "Normal";
+    } else if($jml_bulan_user <= 24){
+        $klasifikasi_jml_bulan_hasil = "Panjang";
+    }
+
+    $id_increment = rand(); 
+    $id_klasifikasi="WL-".$id_increment;
+    $query="INSERT INTO `klasifikasi_ai` (`id_klasifikasi`, `id_pesanan`, `harga`, `dp`, `jml_bulan`, `tahun`,`ket`) VALUES ('$id_klasifikasi', '$id', '$klasifikasi_harga_barang_hasil', '$klasifikasi_dp_hasil', '$klasifikasi_jml_bulan_hasil', '$klasifikasi_tahun_hasil','$keterangan_hasil');";
+    if(mysqli_query($koneksi, $query)) {
+         header("location:./ai-view-pesanan.php");
     } else {
         echo "<script language='javascript'> alert('Data Kok Gagal Disimpan!');history.go(-1); </script>";
     }

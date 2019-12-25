@@ -14,10 +14,10 @@
             <?php
 
             $data_pesanan = "SELECT 
-            pesanan.id_pesanan, pesanan.tgl_pesanan, pesanan.ket_pesanan, 
+            pesanan.id_pesanan, pesanan.tgl_pesanan, pesanan.ket_pesanan, pesanan.ket_pesanan,
             barang.nama_barang, barang.harga, 
             users.id, users.angkatan, users.nama,
-            tagihan.id_tagihan, tagihan.jml_dp, tagihan.jml_tagihan, tagihan.jml_bulan 
+            tagihan.id_tagihan, tagihan.jml_dp, tagihan.jml_tagihan, tagihan.jml_bulan
             
             FROM pesanan 
             
@@ -38,6 +38,8 @@
                     <th scope="col">DP</th>
                     <th scope="col">Tagihan</th>
                     <th scope="col">Jumlah Bulan</th>
+                    <th scope="col">Keterangan</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -52,6 +54,10 @@
                     <td>".$row["jml_dp"]."</td>
                     <td>".$row["jml_tagihan"]."</td>
                     <td>".$row["jml_bulan"]." Bulan</td>
+                    <td>".$row["ket_pesanan"]."</td>
+                    <td>
+                    <a href='ai-view-proses-data-klasifikasi.php?id=" . $row['id_pesanan'] . "'><button type='button' class='btn btn-outline-info'>Proses</button></a>
+                    </td>
                   </tr>"; ?>
         <?php };
             } else {
