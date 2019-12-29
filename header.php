@@ -76,7 +76,7 @@ if(isset($_SESSION['username'])) {
                 <div class="dropdown-menu-inner">
                   <a href="#" class="media d-flex align-items-center">
                     <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
-                      <i class="ni ni-spaceship"></i>
+                    <i class="fa fa-credit-card"></i>
                     </div>
                     <div class="media-body ml-3">
                       <h6 class="heading text-primary mb-md-1">Pembayaran Tagihan</h6>
@@ -85,7 +85,7 @@ if(isset($_SESSION['username'])) {
                   </a>
                   <a href="#" class="media d-flex align-items-center">
                     <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
-                      <i class="ni ni-palette"></i>
+                    <i class="fa fa-upload"></i>
                     </div>
                     <div class="media-body ml-3">
                       <h6 class="heading text-primary mb-md-1">Pengajuan Cicilan</h6>
@@ -94,7 +94,7 @@ if(isset($_SESSION['username'])) {
                   </a>
                   <a href="https://demos.creative-tim.com/argon-design-system/docs/components/alerts.html" class="media d-flex align-items-center">
                     <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
-                      <i class="ni ni-ui-04"></i>
+                    <i class="fa fa-user-md"></i>
                     </div>
                     <div class="media-body ml-3">
                       <h5 class="heading text-warning mb-md-1">Fine Jobs</h5>

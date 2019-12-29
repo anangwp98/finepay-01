@@ -12,6 +12,8 @@ include('../koneksi.php');
       $dp = $row['dp'];
       $jml_bulan = $row['jml_bulan'];
       $ket = $row['ket'];
+
+
       $data = [
         [$tahun, $harga ,$dp,$jml_bulan,$ket],
       ]; 
@@ -28,7 +30,7 @@ include('../koneksi.php');
     // Hitung menggunakan data training 
     $c45->hitung(); 
     // Uji Coba dengan menggunakan 1 data testing sebagai berikut: 
-    $data_testing = ['Muda', 'Kecil','Tinggi','Normal'];
+    $data_testing = ['Muda', 'Kecil','Tinggi','Panjang'];
     echo $c45->predictDataTesting($data_testing); 
     // Luaran diatas akan menghasilkan jawaban Yes 
     // Sedangkan untuk melihat rule yang dihasilkan dari data set yang telah diberikan ialah dengan menggunakan perintah sebagai berikut: 
