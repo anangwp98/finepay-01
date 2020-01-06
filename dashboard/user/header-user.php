@@ -176,13 +176,35 @@ if(!isset($_SESSION['username'])){
                       <span class="font-weight-bold mb-0 font-biru"><?php echo $a; ?></span>
                       <?php
                         if ($showCreateDompet == true) {
-                            echo "<br>                                               
-                                <button class='btn btn-icon btn-secondary btn-card-1' type='button'>
-                                <span class='btn-inner--icon'><i class='fas fa-plus'></i></span>
+                          echo "<br>                                               
+                          <p class='mt-3 mb-0 text-muted text-sm'>                                      
+                          <button class='btn btn-icon btn-info btn-card-1' type='button' data-toggle='modal' data-target='#modal-input-topup'>
+                          <span class='btn-inner--icon'><i class='fas fa-plus'></i></span>
 
-                                <span class='btn-inner--text'>Tambah</span>
-
-                                </button>";
+                          <span class='btn-inner--text'>Buka</span>
+                        </button>
+                      </p>
+                      <div class='modal fade' id='modal-input-topup' tabindex='-1' role='dialog' aria-labelledby='modal-input-topup' aria-hidden='true'>
+                      <div class='modal-dialog modal- modal-dialog-centered modal-xl' role='document'>
+                        <div class='modal-content'>
+                          <div class='modal-body p-0'>
+                            <div class='card bg-secondary shadow border-0'>
+                              <div class='card-header bg-transparent pb-0'>
+                                <div class='text-muted text-center mt-2 mb-3'><small>Yakin anda membuat dompet?</small></div>
+                                  <div class='card-body px-lg-5 py-lg-5'>
+                                    <form action='./proses.php' method='POST'>
+                                      <div class='text-center'>
+                                        <input type='hidden' name='id' class='btn btn-primary my-4'>
+                                        <input type='submit' name='create_dompet' class='btn btn-primary my-4' value='Ya'>
+                                      </div>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>";
                         } else {
                             echo "
                                 <p class='mt-3 mb-0 text-muted text-sm'>                                      

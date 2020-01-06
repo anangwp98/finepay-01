@@ -18,7 +18,7 @@ if(isset($_POST['input_topup'])) {
     } else {
         echo"<script language='javascript'> alert('Data Gagal Disimpan!');history.go(-1); </script>";
     }
-}if(isset($_POST['prosesPesan'])) {
+} if(isset($_POST['prosesPesan'])) {
     $id_barang          = $_POST['id'];
     $id_user            = $_SESSION['id'];
     $harga_brg          = $_POST['harga_brg'];
@@ -51,6 +51,18 @@ if(isset($_POST['input_topup'])) {
         }
     } else {
         echo"<script language='javascript'> alert('Data Pesanan Gagal Disimpan!');history.go(-1); </script>";
+    }
+} if(isset($_POST['create_dompet'])) {
+    $id_user        = $_SESSION['id'];
+    $saldo = 0;
+    $new_auto_increment = rand();
+    $id="DP".$new_auto_increment;
+    $jenis_dompet = "Tabungan";
+    $query="INSERT INTO `dompet` (`id_dompet`, `saldo`, `id_user`, `jenis_dompet`) VALUES ('$id', '$saldo', '$id_user', '$jenis_dompet');";
+    if(mysqli_query($koneksi, $query)) {
+        header("location:./index.php");
+    } else {
+        echo"<script language='javascript'> alert('Data Gagal Disimpan!');history.go(-1); </script>";
     }
 } else {
     echo "<script language='javascript'> alert('Data Gagal Disimpan!');history.go(-1); </script>";
