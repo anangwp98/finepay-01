@@ -16,9 +16,26 @@
                       if ( $rowimg['status'] > 0) {
                         echo "<img src='../assets/img/theme/".$rowimg['status']."' class='rounded-circle'>";
                       } else {
-                        echo "BELUM ADA FOTO";
+                        echo "CRASH DATA!";
                       }
                     echo "</div>";
+                  }
+
+                  $query_cek_gambar = "SELECT * FROM `profil_img` WHERE id_user='$id_user_admin'";
+                  $sql_cek_gambar = mysqli_query($koneksi, $query_cek_gambar);
+                  $resultCekGambar = mysqli_num_rows($sql_cek_gambar);
+
+                  if (($resultCekGambar) > 0) {
+                      $cek_gambar = 1;
+                  } else {
+                      $cek_gambar = 0;
+                  }
+
+                  if ($resultCekGambar > 0) {
+                  
+                    while($gmbr = mysqli_fetch_assoc($sql_cek_gambar)) {
+                      $gambar = $gmbr['status'];
+                    }
                   }
                   ?>
                 </div>
@@ -34,11 +51,40 @@
               </div>
               <div class="text-center">
                 <h3>
+                <br>
+                <br>
                   <?php echo $_SESSION['nama']; ?><span class="font-weight-light">, 27</span>
                 </h3>
                 <div class="h5 font-weight-300 capitalize-css">
                   <i class="ni location_pin mr-2"></i><?php echo $_SESSION['level']; ?>
                 </div>
+                
+              <form action="upload-img.php" method="post" enctype="multipart/form-data">
+              <?php
+                if($cek_gambar == 1) {
+                  ?> 
+                  <input type="hidden" name="cek_gambar" value="1">
+                  <input type="hidden" name="name_gambar_profil" value="<?php echo $gambar ?>">
+                  
+                <?php } else { ?>
+                  
+                  <input type="hidden" name="cek_gambar" value="0">
+                <?php 
+                  $cek_gambar = false;
+                }
+              ?>
+                <div class="row">
+                  <div class="form-group col-xl-12">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                      <input type="file" name="profilImg" class="form-control">
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary" name='submit-img'>Upload</button>
+              </form>
               </div>
             </div>
           </div>

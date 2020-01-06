@@ -32,19 +32,11 @@
                 </div>
               </div>
               
-              <form action="upload-img.php" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                          <div class="input-group">
-                            <div class="input-group-prepend">
-                            <input type="file" name="profilImg" class="form-control">
-                            </div>
-                           
-                          </div>
-                        </div>
-                <button type="submit" class="btn btn-primary" name='submit'>Upload</button>
-              </form>
               <div class="text-center">
                 <h3>
+                <br>
+                <br>
+                <br>
                   <?php echo $_SESSION['nama']; ?><span class="font-weight-light">, 27</span>
                 </h3>
                 <div class="h5 font-weight-300 capitalize-css">

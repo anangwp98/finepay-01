@@ -98,10 +98,6 @@ if(!isset($_SESSION['username'])){
           <a class=" nav-link  " href=" ./index.php"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
             </a>
           </li>
-          <li class="nav-item  class=" active" ">
-          <a class=" nav-link  " href=" ./view-pesanan.php"> <i class="fas fa-luggage-cart"></i> Pesanan Saya
-            </a>
-          </li>
           
           <li class="nav-item  class=" active" ">
           <a class=" nav-link  " href=" ./view-barang.php"> <i class="fas fa-boxes"></i> Data Barang
@@ -110,29 +106,7 @@ if(!isset($_SESSION['username'])){
           
           
         </ul>
-        <!-- Divider -->
-        <hr class="my-3">
-        <!-- Heading -->
-        <h6 class="navbar-heading text-muted">Documentation</h6>
-        <!-- Navigation -->
-        <ul class="navbar-nav mb-md-3">
-          <li class="nav-item">
-            <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
-              <i class="ni ni-spaceship"></i> Getting started
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html">
-              <i class="ni ni-palette"></i> Foundation
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html">
-              <i class="ni ni-ui-04"></i> Components
-            </a>
-          </li>
-        </ul>
-      </div>
+        
     </div>
   </nav>
   <div class="main-content">
@@ -193,23 +167,6 @@ if(!isset($_SESSION['username'])){
         <div class="header-body">
           <!-- Card stats -->
           <div class="row">
-            <div class="col-xl-3 col-lg-6">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Tagihan Saya</h5>
-                      <span class="h2 font-weight-bold mb-0"><?php echo "Jml Tagihan"?></span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                      <i class="fas fa-file-invoice-dollar"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
             <div class="col-xl-3 col-lg-6">
               <div class="card card-stats mb-4 mb-xl-0">
                 <div class="card-body">
@@ -280,23 +237,6 @@ if(!isset($_SESSION['username'])){
                     <div class="col-auto">
                       <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
                       <i class="fas fa-wallet"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-6">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Jatuh Tempo</h5>
-                      <span class="h2 font-weight-bold mb-0">On Dev.</span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                      <i class="fas fa-money-check-alt"></i>
                       </div>
                     </div>
                   </div>
