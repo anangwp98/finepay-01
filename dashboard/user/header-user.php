@@ -121,13 +121,25 @@ if(!isset($_SESSION['username'])){
           <li class="nav-item dropdown">
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="media align-items-center">
-                <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="../assets/img/theme/team-4-800x800.jpg">
-                </span>
+              <?php
+		            	$id_user_admin = $_SESSION['id'];
+                  $sqlImg = "SELECT * FROM profil_img WHERE id_user='$id_user_admin'";
+                  $resultImg = mysqli_query($koneksi, $sqlImg);
+                 
+                  while ($rowimg = mysqli_fetch_assoc($resultImg)) {
+                    echo "<span class='avatar avatar-sm rounded-circle'>";
+                      if ( $rowimg['status'] > 0) {
+                        echo "<img src='../assets/img/theme/".$rowimg['status']."' class='rounded-circle'>";
+                      } else {
+                        echo "BELUM ADA FOTO";
+                      }
+                    echo "</span>";
+                  }
+                  ?>
                 <div class="media-body ml-2 d-none d-lg-block">
                   <b> <?php echo $_SESSION['nama'];?> </b>
                 </div>
-              </div>
+              </div> 
             </a>
             <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
               <div class=" dropdown-header noti-title">
