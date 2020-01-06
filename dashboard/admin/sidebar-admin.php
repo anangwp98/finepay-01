@@ -29,8 +29,8 @@
         <div class="navbar-collapse-header d-md-none">
           <div class="row">
             <div class="col-6 collapse-brand">
-              <a href="../index.html">
-                <img src="../assets/img/brand/blue.png">
+              <a class="navbar-brand pt-0" href="../admin/index.php">
+                <img alt="Image placeholder" src="../assets/img/brand/logo_finepay.png">
               </a>
             </div>
             <div class="col-6 collapse-close">

@@ -157,7 +157,6 @@
                       <button type='button' class='btn btn-outline-info' data-toggle='modal' data-target='#modal-notification". $row["id"] . "'>Info</button>
                       <button type='button' class='btn btn-outline-danger' data-toggle='modal' data-target='#modal-hapus". $row["id"] . "'>Hapus</button>
                       
-                      <button type='button' class='btn btn-success' data-toggle='modal' data-target='#modal-edit". $row["id"] . "'>Edit</button>
                     </td>
                   </tr>"; ?>
                   
