@@ -5,7 +5,7 @@ session_start();
 if(isset($_POST['submit-img'])) {
     $id_user_upload = $_SESSION['id'];
     $cek_gambar = $_POST['cek_gambar'];
-    
+     
     $name_gambar = $_POST['name_gambar_profil'];
 
     $id_upload = rand();

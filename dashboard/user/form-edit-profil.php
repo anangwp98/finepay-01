@@ -7,8 +7,8 @@
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                 <?php
-		            	$id_user_admin = $_SESSION['id'];
-                  $sqlImg = "SELECT * FROM profil_img WHERE id_user='$id_user_admin'";
+		            	$id_user_user = $_SESSION['id'];
+                  $sqlImg = "SELECT * FROM profil_img WHERE id_user='$id_user_user'";
                   $resultImg = mysqli_query($koneksi, $sqlImg);
                  
                   while ($rowimg = mysqli_fetch_assoc($resultImg)) {
@@ -21,7 +21,7 @@
                     echo "</div>";
                   }
 
-                  $query_cek_gambar = "SELECT * FROM `profil_img` WHERE id_user='$id_user_admin'";
+                  $query_cek_gambar = "SELECT * FROM `profil_img` WHERE id_user='$id_user_user'";
                   $sql_cek_gambar = mysqli_query($koneksi, $query_cek_gambar);
                   $resultCekGambar = mysqli_num_rows($sql_cek_gambar);
 
@@ -35,7 +35,28 @@
                   
                     while($gmbr = mysqli_fetch_assoc($sql_cek_gambar)) {
                       $gambar = $gmbr['status'];
+
                     }
+                  }
+
+                  $query_cek_gambar_KTP = "SELECT * FROM `personal_identity` WHERE id_user='$id_user_user'";
+                  $sql_cek_gambar_KTP = mysqli_query($koneksi, $query_cek_gambar_KTP);
+                  $resultCekGambar_KTP = mysqli_num_rows($sql_cek_gambar_KTP);
+
+                  if (($resultCekGambar_KTP) > 0) {
+                      $cek_gambar_KTP = 1;
+                  } else {
+                      $cek_gambar_KTP = 0;
+                  }
+
+                  if ($resultCekGambar_KTP > 0) {
+                  
+                    while($gmbrktp = mysqli_fetch_assoc($sql_cek_gambar_KTP)) {
+                      $gambarKTP = $gmbrktp['ktp'];
+                      $link_ktp = '../assets/img/datadiri/'.$gambarKTP;
+                    }
+                  } else {
+                    $test = "Gagal";
                   }
                   ?>
                 </div>
@@ -99,7 +120,7 @@
               </div>
             </div>
             <div class="card-body">
-              <form action="proses-update.php" method="POST">
+              <form action="proses-update.php" method="POST" enctype="multipart/form-data">
                 <h6 class="heading-small text-muted mb-4">Informasi Akun</h6>
                 <div class="pl-lg-4">
                   <div class="row">
@@ -165,6 +186,24 @@
                 <div class="pl-lg-4">
                   <div class="form-group">
                     <textarea rows="4" name="alamat" class="form-control form-control-alternative"><?php echo $_SESSION['alamat']; ?></textarea>
+                  </div>
+                </div>
+                <hr class="my-4" />
+                <!-- Description -->
+                <h6 class="heading-small text-muted mb-4">Dokumen</h6>
+                <div class="pl-lg-4">
+                  <div class="form-group">
+                  <p>KTP</p>
+                  <hr class="my-4" />
+                      <img class="card-img-top" src="<?php $link_ktp ?>">
+                      <input type="file" name="docKTP" class="form-control">
+                    <!-- <textarea rows="4" name="alamat" class="form-control form-control-alternative"><?php echo $_SESSION['alamat']; ?></textarea> -->
+                  </div>
+                  <div class="form-group">
+                  <p>KTM</p>
+                  <hr class="my-4" />
+                      <input type="file" name="docKTM" class="form-control">
+                    <!-- <textarea rows="4" name="alamat" class="form-control form-control-alternative"><?php echo $_SESSION['alamat']; ?></textarea> -->
                   </div>
                 </div>
                 <input type="submit" value="Simpan" name="update" class="btn btn-primary">
