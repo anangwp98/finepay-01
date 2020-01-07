@@ -279,6 +279,7 @@ if(!isset($_SESSION['username'])){
                 </div>
               </div>
             </div>
+            
             <div class="col-xl-3 col-lg-6">
               <div class="card card-stats mb-4 mb-xl-0">
                 <div class="card-body">
@@ -323,6 +324,31 @@ if(!isset($_SESSION['username'])){
                   }
                   ?>
                     
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col"> 
+                      <h5 class="card-title text-uppercase text-muted mb-0">Lihat Syarat Dan Ketentuan</h5>
+                        <a href="./view-syarat-ketentuan.php">
+                        <p class='mt-3 mb-0 text-muted text-sm'>                                      
+                         <button class='btn btn-icon btn-info btn-card-1' type='button'>
+                         <span class='btn-inner--icon'><i class="far fa-eye"></i></span>
+
+                            <span class='btn-inner--text'>Lihat</span>
+                          </button>
+                        </p>
+                        </a>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                      <i class="fas fa-file-contract"></i>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
