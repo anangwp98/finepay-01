@@ -72,6 +72,18 @@
         <!-- Divider -->
         <hr class="my-3">
         <!-- Heading -->
+        <h6 class="navbar-heading text-muted">Upload your S&K</h6>
+        <!-- Navigation -->
+        <ul class="navbar-nav mb-md-3">
+          <li class="nav-item">
+            <a class="nav-link" href="./view-materi.php">
+              <i class="fab fa-pied-piper-hat"></i> Pengaturan
+            </a>
+          </li>
+        </ul>
+        <!-- Divider -->
+        <hr class="my-3">
+        <!-- Heading -->
         <h6 class="navbar-heading text-muted">Artificial Intelegent</h6>
         <!-- Navigation -->
         <ul class="navbar-nav mb-md-3">

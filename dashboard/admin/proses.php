@@ -149,6 +149,47 @@ if(isset($_POST['simpan_user'])) {
     } else {
         echo "<script language='javascript'> alert('Data Kok Gagal Disimpan!');history.go(-1); </script>";
     }
+} else if(isset($_POST['simpan_materi'])) {
+    $id_user_upload = $_SESSION['id'];
+    $name_materi = $_POST['nama'];
+    $file = $_FILES['document'];
+    $name_file = $_FILES['document']['name'];
+    
+    $fileTmpName = $_FILES['document']['tmp_name'];
+    $fileSize = $_FILES['document']['size'];
+    $fileError = $_FILES['document']['error'];
+    $fileType = $_FILES['document']['type'];
+    $id_upload = rand();
+
+    $fileExt = explode('.', $name_file);
+    $fileActualExt = strtolower(end($fileExt));
+
+    $allowed = array('pdf');
+    if(in_array($fileActualExt, $allowed)){
+        if($fileError===0) {
+            if($fileSize < 1000000) {
+                unlink('../assets/doc/'.$name_file);
+                $filenameNew = $name_file;
+                $fileDestination = '../assets/doc/'.$filenameNew;
+
+                    $queryUpload = "INSERT INTO `materi` (`id_materi`, `id_user`, `nama_materi`, `nama_file`) VALUES ('$id_upload', '$id_user_upload', '$name_materi', '$filenameNew');";
+                    if(mysqli_query($koneksi, $queryUpload)) {
+                        header("location: ./view-materi.php?upload-success");
+                    } else {
+                        echo"<script language='javascript'> alert('Data Gagal Disimpan!');history.go(-1); </script>";
+                    }
+                    
+                    move_uploaded_file($fileTmpName, $fileDestination);
+            } else {
+                echo "Your file is too big1";
+            }
+        } else {
+            echo "There was an error uploading your files";
+        }
+    } else {
+        echo "You cannot upload file of this type";
+    }
+    
 } else {
     echo "<script language='javascript'> alert('Data Gagal Disimpan!');history.go(-1); </script>";
 }
