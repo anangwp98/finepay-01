@@ -36,8 +36,22 @@ if(!isset($_SESSION['username'])){
   <title>
     Welcome <?php echo $_SESSION['nama']; ?>
   </title>
-  <!-- Favicon -->
-  <link href="../assets/img/brand/favicon.png" rel="icon" type="image/png">
+  <!-- Favicon --><!-- Favicon --> 
+
+<?php
+  $id_user_admin = $_SESSION['id'];
+  $sqlImg = "SELECT * FROM profil_img WHERE id_user='$id_user_admin'";
+  $resultImg = mysqli_query($koneksi, $sqlImg);
+
+  while ($rowimg = mysqli_fetch_assoc($resultImg)) {
+      if ( $rowimg['status'] > 0) {
+        $linkFavicon= "../assets/img/theme/".$rowimg['status']."";
+      } else {
+        echo "BELUM ADA FOTO";
+      }
+  }
+?>
+<link href="<?php echo $linkFavicon ?>" rel="icon" type="image/png">
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <!-- Icons -->
