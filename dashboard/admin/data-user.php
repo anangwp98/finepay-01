@@ -118,7 +118,7 @@
 
             <?php
 
-            $data_admin = "SELECT id, username, nama, email, password, DATE_FORMAT(tglLahir, '%M %d %Y') as tglLahir, jk, alamat, angkatan, nomorTelp, level FROM users WHERE level='user'";
+            $data_admin = "SELECT users.id, users.username, users.nama, users.email, users.password, DATE_FORMAT(users.tglLahir, '%M %d %Y') as tglLahir, users.jk, users.alamat, users.angkatan, users.nomorTelp, users.level, personal_identity.id_personal_identity, personal_identity.id_user, personal_identity.ktp, personal_identity.ktm FROM users LEFT JOIN personal_identity ON users.id = personal_identity.id_user WHERE users.level='user'";
             $hasil_admin = mysqli_query($koneksi, $data_admin); 
 
             $total_record_admin = mysqli_num_rows($hasil_admin);
@@ -131,6 +131,8 @@
                     <th scope="col">Nama</th>
                     <th scope="col">Email</th>
                     <th scope="col">Jenis Kelamin</th>
+                    
+                    <th scope="col">Document</th>
                     <th scope="col">Action</th>
                     
                   </tr>
@@ -148,11 +150,39 @@
                 } else {
                   $showJK = 'Tidak Terdefinisikan';
                 }
+                // $showKTP = $row['ktp'];
+                // $showKTM = $row['ktm'];
+                    if($row['ktp'] == true) {
+                      $tampilKTP = 1;
+                      $showKTP = $row['ktp'];
+                      $tampilrowKTP = "<img  src='../assets/img/datadiri/".$showKTP."' class='rounded-circle'>";
+                    } else {
+                      $tampilKTP = 0;
+                      $tampilrowKTP = "~";
+                    }
+                    if($row['ktm'] == true) {
+                      $tampilKTM = 1;
+                      $showKTM = $row['ktm'];
+                      $tampilrowKTM = "<img  src='../assets/img/datadiri/".$showKTM."' class='rounded-circle'>";
+                    } else {
+                      $tampilKTM = 0;
+                      $tampilrowKTM = "~";
+                    }
                   echo "<tr>
                     <th scope='row'>" . $row["username"]. "</th>
                     <td>" . $row["nama"]."</td>
                     <td>".$row["email"]."</td>
                     <td>".$showJK."</td>
+                    <td>
+                    <div class='avatar-group'>
+                      <a href='#' class='avatar avatar-sm' data-toggle='tooltip'>
+                          ".$tampilrowKTP."
+                      </a>
+                      <a href='#' class='avatar avatar-sm' data-toggle='tooltip'>
+                          ".$tampilrowKTM."
+                      </a>
+                    </div>
+                    </td>
                     <td scope='row'>
                       <button type='button' class='btn btn-outline-info' data-toggle='modal' data-target='#modal-notification". $row["id"] . "'>Info</button>
                       <button type='button' class='btn btn-outline-danger' data-toggle='modal' data-target='#modal-hapus". $row["id"] . "'>Hapus</button>
