@@ -43,20 +43,17 @@
                   $sql_cek_gambar_KTP = mysqli_query($koneksi, $query_cek_gambar_KTP);
                   $resultCekGambar_KTP = mysqli_num_rows($sql_cek_gambar_KTP);
 
-                  if (($resultCekGambar_KTP) > 0) {
-                      $cek_gambar_KTP = 1;
-                  } else {
-                      $cek_gambar_KTP = 0;
-                  }
-
                   if ($resultCekGambar_KTP > 0) {
                   
                     while($gmbrktp = mysqli_fetch_assoc($sql_cek_gambar_KTP)) {
                       $gambarKTP = $gmbrktp['ktp'];
-                      $link_ktp = '../assets/img/datadiri/'.$gambarKTP;
+                      $gambarKTM = $gmbrktp['ktm'];
+                      $id_personal_id = $gmbrktp['id_personal_identity'];
                     }
                   } else {
-                    $test = "Gagal";
+                    $gambarKTP = 0;
+                    $id_personal_id = 0;
+                    $gambarKTM = 0;
                   }
                   ?>
                 </div>
@@ -86,9 +83,7 @@
                   ?> 
                   <input type="hidden" name="cek_gambar" value="1">
                   <input type="hidden" name="name_gambar_profil" value="<?php echo $gambar ?>">
-                  
                 <?php } else { ?>
-                  
                   <input type="hidden" name="cek_gambar" value="0">
                 <?php 
                   $cek_gambar = false;
@@ -188,27 +183,44 @@
                     <textarea rows="4" name="alamat" class="form-control form-control-alternative"><?php echo $_SESSION['alamat']; ?></textarea>
                   </div>
                 </div>
-                <hr class="my-4" />
+                
+                <input type="submit" value="Simpan Data Diri" name="update" class="btn btn-primary">
+              </form>
+              <form action="proses-update.php" method="post" enctype="multipart/form-data">
+              <hr class="my-4" />
                 <!-- Description -->
                 <h6 class="heading-small text-muted mb-4">Dokumen</h6>
                 <div class="pl-lg-4">
                   <div class="form-group">
                   <p>KTP</p>
                   <hr class="my-4" />
-                      <img class="card-img-top" src="<?php $link_ktp ?>">
+                      <input type="text" name="idKTP" class="form-control form-control-alternative" value="<?php echo $id_personal_id; ?>" hidden>
+                      <input type="text" name="nameKTP" class="form-control form-control-alternative" value="<?php echo $gambarKTP; ?>" >
+                      <img src="../assets/img/datadiri/<?php echo $gambarKTP ?>" class="card-img-top">
                       <input type="file" name="docKTP" class="form-control">
-                    <!-- <textarea rows="4" name="alamat" class="form-control form-control-alternative"><?php echo $_SESSION['alamat']; ?></textarea> -->
                   </div>
+                </div>
+                
+                <input type="submit" value="Simpan Document" name="simpan_ktp" class="btn btn-primary">
+                </form>
+                <form action="proses-update.php" method="post" enctype="multipart/form-data">
+                <hr class="my-4" />
+                <!-- Description -->
+                <h6 class="heading-small text-muted mb-4">Dokumen</h6>
+                <div class="pl-lg-4">
                   <div class="form-group">
                   <p>KTM</p>
                   <hr class="my-4" />
+                  <input type="text" name="idKTM" class="form-control form-control-alternative" value="<?php echo $id_personal_id; ?>" hidden>
+                  <input type="text" name="nameKTM" class="form-control form-control-alternative" value="<?php echo $gambarKTM; ?>" >
+                  <img src="../assets/img/datadiri/<?php echo $gambarKTM ?>" class="card-img-top">
                       <input type="file" name="docKTM" class="form-control">
-                    <!-- <textarea rows="4" name="alamat" class="form-control form-control-alternative"><?php echo $_SESSION['alamat']; ?></textarea> -->
                   </div>
                 </div>
-                <input type="submit" value="Simpan" name="update" class="btn btn-primary">
+                
+                <input type="submit" value="Simpan Document" name="simpan_ktm" class="btn btn-primary">
                 <input TYPE="button" VALUE="Batal" onClick="history.go(-1);" class="btn btn-warning">
-              </form>
+                </form>
             </div>
           </div>
         </div>

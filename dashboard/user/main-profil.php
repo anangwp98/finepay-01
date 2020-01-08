@@ -140,11 +140,11 @@
                 <!-- Description -->
                 <h6 class="heading-small text-muted mb-4">DOKUMEN</h6>
                 <div class="pl-lg-4">
-                  <img class="card-img-top" src="../../assets/img/theme/team-1-800x800.jpg" alt="Card image cap">
+                    <img class="card-img-top identitas" src="../assets/img/datadiri/<?php echo $ktp ?>">
                     <h5 class="card-title">KTP</h5>
                 </div>
                 <div class="pl-lg-4">
-                  <img class="card-img-top" src="../../assets/img/theme/team-1-800x800.jpg" alt="Card image cap">
+                    <img class="card-img-top identitas" src="../assets/img/datadiri/<?php echo $ktm ?>" >
                     <h5 class="card-title">KTM</h5>
                 </div>
               </form>

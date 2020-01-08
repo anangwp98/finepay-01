@@ -7,7 +7,7 @@ if(isset($_POST['submit-img'])) {
     $cek_gambar = $_POST['cek_gambar'];
     
     $name_gambar = $_POST['name_gambar_profil'];
-
+ 
     $id_upload = rand();
     $file = $_FILES['profilImg'];
     $fileName = $_FILES['profilImg']['name'];
