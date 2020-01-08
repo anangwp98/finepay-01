@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Des 2019 pada 15.58
+-- Waktu pembuatan: 08 Jan 2020 pada 17.17
 -- Versi server: 10.4.6-MariaDB
 -- Versi PHP: 7.3.8
 
@@ -86,14 +86,6 @@ CREATE TABLE `dompet` (
   `saldo` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `dompet`
---
-
-INSERT INTO `dompet` (`id_dompet`, `id_user`, `jenis_dompet`, `saldo`) VALUES
-('1211', 'FNuser09122019-', NULL, 300289180),
-('WL-231176919', 'ADM001', 'ANANG WAHYU PRADANA', 189900000);
-
 -- --------------------------------------------------------
 
 --
@@ -113,7 +105,7 @@ CREATE TABLE `download` (
 --
 
 INSERT INTO `download` (`id_download`, `nama`, `link`, `icon`, `warna`) VALUES
-('DW-2092585892', 'Google Play', 'play.google.com', '', 'btn-white');
+('DW-1855200447', 'Github', 'github.com', '<i class=\"fa fa-github\"></i>', 'btn-primary');
 
 -- --------------------------------------------------------
 
@@ -157,15 +149,6 @@ CREATE TABLE `klasifikasi_ai` (
   `ket` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `klasifikasi_ai`
---
-
-INSERT INTO `klasifikasi_ai` (`id_klasifikasi`, `id_pesanan`, `harga`, `dp`, `jml_bulan`, `tahun`, `ket`) VALUES
-('WL-136475358', 'ORD-143155', 'Besar', 'Tinggi', 'Normal', 'Tua', 'ACCEPTED'),
-('WL-233297934', 'ORD-726978', 'Kecil', 'Tinggi', 'Normal', 'Tua', 'DECLINE'),
-('WL-797249228', 'ORD-145677', 'Kecil', 'Tinggi', 'Normal', 'Muda', 'ACCEPTED');
-
 -- --------------------------------------------------------
 
 --
@@ -181,14 +164,18 @@ CREATE TABLE `log_topup` (
   `id_topup` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data untuk tabel `log_topup`
+-- Struktur dari tabel `materi`
 --
 
-INSERT INTO `log_topup` (`id`, `tgl_diterima`, `saldo_awal`, `saldo_akhir`, `id_user`, `id_topup`) VALUES
-('LGTP-12893007412019-', '2019-12-25 00:34:22', 300099180, 300189180, 'ADM001', 'TP16396003312019-12-'),
-('LGTP-15412431802019-', '2019-12-25 17:00:17', 300189180, 300289180, 'ADM001', 'TP3336824782019-12-2'),
-('LGTP-18065916512019-', '2019-12-25 00:34:19', 300009180, 300099180, 'ADM001', 'TP9635388582019-12-2');
+CREATE TABLE `materi` (
+  `id_materi` varchar(20) NOT NULL,
+  `id_user` varchar(20) NOT NULL,
+  `nama_materi` varchar(100) NOT NULL,
+  `nama_file` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -207,6 +194,26 @@ CREATE TABLE `pembayaran` (
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `personal_identity`
+--
+
+CREATE TABLE `personal_identity` (
+  `id_personal_identity` varchar(20) NOT NULL,
+  `id_user` varchar(15) NOT NULL,
+  `ktp` varchar(100) NOT NULL,
+  `ktm` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `personal_identity`
+--
+
+INSERT INTO `personal_identity` (`id_personal_identity`, `id_user`, `ktp`, `ktm`) VALUES
+('796791381', 'FNuser09122019-', '20200108_213036.jpg', '20200108_213001.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `pesanan`
 --
 
@@ -218,14 +225,27 @@ CREATE TABLE `pesanan` (
   `ket_pesanan` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data untuk tabel `pesanan`
+-- Struktur dari tabel `profil_img`
 --
 
-INSERT INTO `pesanan` (`id_pesanan`, `id_user`, `id_barang`, `tgl_pesanan`, `ket_pesanan`) VALUES
-('ORD-143155', 'FNrona123251220', 'BRG-641730404Acer-Sw', '2019-12-25 16:54:32', 'ACCEPTED'),
-('ORD-145677', 'FNuser09122019-', 'BRG-44965238SAMSUNG-', '2019-12-25 13:38:31', 'ACCEPTED'),
-('ORD-726978', 'FNanangwp982512', 'BRG-1981474627SAMSUN', '2019-12-25 15:43:33', 'DECLINE');
+CREATE TABLE `profil_img` (
+  `id_profil` varchar(15) NOT NULL,
+  `id_user` varchar(20) NOT NULL,
+  `status` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `profil_img`
+--
+
+INSERT INTO `profil_img` (`id_profil`, `id_user`, `status`) VALUES
+('1039287470', 'ADM001', '5e14393d1f4e24.52976601.png'),
+('1394978707', 'FNuser09122019-', '5e14bd5a03a0c7.15088838.jpg'),
+('2043718063', 'FNusr06012020-1', '5e137514d0b246.80588203.png'),
+('545890484', 'FNrona123091220', '5e14396ba35e48.89262645.jpg');
 
 -- --------------------------------------------------------
 
@@ -318,15 +338,6 @@ CREATE TABLE `tagihan` (
   `jml_bulan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `tagihan`
---
-
-INSERT INTO `tagihan` (`id_tagihan`, `id_pesanan`, `jml_dp`, `jml_tagihan`, `tgl_jatuh_tempo`, `jml_bulan`) VALUES
-('TRX-101706', 'ORD-143155', 10000000, 1233233, NULL, 12),
-('TRX-149471', 'ORD-726978', 2000000, 344000, NULL, 10),
-('TRX-334368', 'ORD-145677', 1000000, 388333, NULL, 12);
-
 -- --------------------------------------------------------
 
 --
@@ -341,15 +352,6 @@ CREATE TABLE `topup` (
   `tanggal_topup` datetime NOT NULL,
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `topup`
---
-
-INSERT INTO `topup` (`id_topup`, `id_user`, `jumlah_topup`, `keterangan_topup`, `tanggal_topup`, `status`) VALUES
-('TP16396003312019-12-', 'FNuser09122019-', 90000, 'test', '2019-12-25 00:26:08', 'SELESAI'),
-('TP3336824782019-12-2', 'FNuser09122019-', 100000, 'DP', '2019-12-25 16:59:44', 'SELESAI'),
-('TP9635388582019-12-2', 'FNuser09122019-', 90000, 'test', '2019-12-25 00:33:56', 'SELESAI');
 
 -- --------------------------------------------------------
 
@@ -390,13 +392,17 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `nama`, `email`, `password`, `tglLahir`, `jk`, `angkatan`, `alamat`, `nomorTelp`, `level`) VALUES
-('0', '0', '0', '0', '0', NULL, 'L', 0000, NULL, NULL, '0'),
-('ADM001', 'anangwp', 'ANANG WAHYU PRADANA', 'sasas@gmail', '21232f297a57a5a743894a0e4a801fc3', '2020-01-01', 'P', 0000, 'AMBYAARRRRRASRARSARSJABSKAJBSAK', NULL, 'admin'),
+('ADM001', 'anangwp', 'ANANG WAHYU PRADANA', 'anangwahyupradanaofficial@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '1998-01-01', 'P', 0000, 'AMBYAARRRRRASRARSARSJABSKAJBSAK', NULL, 'admin'),
 ('FNaditya2512201', 'aditya', 'Aditya Ramadhan', 'aditya@gmail.com', 'ee11cbb19052e40b07aac0ca060c23ee', '0000-00-00', 'L', 2017, 'Gunung Kidul', '082230381413', 'user'),
+('FNanang12310601', 'anang1231', 'ANANG WAHYU PRADANA', 'user@gmail.com', '202cb962ac59075b964b07152d234b70', '0000-00-00', 'L', 0000, NULL, NULL, 'user'),
 ('FNanangwp982512', 'anangwp98', 'ANANG WAHYU PRADANA', 'anangwahyupradanaofficial@gmail.com', 'ee11cbb19052e40b07aac0ca060c23ee', '0000-00-00', 'L', 0000, 'PONOROGO', '082230381413', 'user'),
+('FNekanov0601202', 'ekanov', 'Eka Novitasari', 'eka@gmail.com', '202cb962ac59075b964b07152d234b70', '0000-00-00', 'P', 2018, 'Yogyakarta', '082230381413', 'user'),
+('FNfita06012020-', 'fita', 'Fita Dinasty', 'fita.dinasty@gmail.com', '202cb962ac59075b964b07152d234b70', '0000-00-00', 'P', 2017, 'Cilacap', '082230381413', 'user'),
 ('FNrona123091220', 'rona123', 'M RONA SETYOWARDANI', 'rona.1125@students.amikom.ac.id', '689b6f533e39e77830b46315ab4cb501', '2019-12-01', 'L', 2019, 'Jl. Nusa Indah II no 57 Condong Catur, Sleman, Yogyakarta', '087758532425', 'admin'),
 ('FNrona123251220', 'rona123', 'M RONA SETYOWARDANI', 'rona.1125@students.amikom.ac.id', 'ee11cbb19052e40b07aac0ca060c23ee', '0000-00-00', 'L', 2014, 'MALUKU UTARA', '082230381413', 'user'),
-('FNuser09122019-', 'user', 'USER TEST', 'user@gmail.com', 'ee11cbb19052e40b07aac0ca060c23ee', '0000-00-00', 'L', 2019, '', '', 'user');
+('FNuser06012020-', 'user', 'Google Play', 'user@gmail.com', 'd41d8cd98f00b204e9800998ecf8427e', '0000-00-00', 'L', 0000, NULL, NULL, 'user'),
+('FNuser09122019-', 'user', 'USER TEST', 'user@gmail.com', 'ee11cbb19052e40b07aac0ca060c23ee', '2020-01-28', 'P', 2019, 'TEST ALAMAT', '', 'user'),
+('FNusr06012020-1', 'usr', 'USER TEST', 'a@gmail.com', 'ee11cbb19052e40b07aac0ca060c23ee', '2020-01-11', 'P', 0000, 'TEST', NULL, 'user');
 
 -- --------------------------------------------------------
 
@@ -409,13 +415,6 @@ CREATE TABLE `website` (
   `nama` varchar(50) NOT NULL,
   `deskripsi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `website`
---
-
-INSERT INTO `website` (`id_website`, `nama`, `deskripsi`) VALUES
-('WB-597004950', 'AMIKOM YOGYAKARTA', ' ');
 
 --
 -- Indexes for dumped tables
@@ -485,6 +484,13 @@ ALTER TABLE `log_topup`
   ADD KEY `id_topup` (`id_topup`);
 
 --
+-- Indeks untuk tabel `materi`
+--
+ALTER TABLE `materi`
+  ADD PRIMARY KEY (`id_materi`),
+  ADD KEY `id_user` (`id_user`);
+
+--
 -- Indeks untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
@@ -493,11 +499,25 @@ ALTER TABLE `pembayaran`
   ADD KEY `id_tagihan` (`id_tagihan`);
 
 --
+-- Indeks untuk tabel `personal_identity`
+--
+ALTER TABLE `personal_identity`
+  ADD PRIMARY KEY (`id_personal_identity`),
+  ADD KEY `id_user` (`id_user`);
+
+--
 -- Indeks untuk tabel `pesanan`
 --
 ALTER TABLE `pesanan`
   ADD PRIMARY KEY (`id_pesanan`),
   ADD KEY `id_barang` (`id_barang`),
+  ADD KEY `id_user` (`id_user`);
+
+--
+-- Indeks untuk tabel `profil_img`
+--
+ALTER TABLE `profil_img`
+  ADD PRIMARY KEY (`id_profil`),
   ADD KEY `id_user` (`id_user`);
 
 --
@@ -594,6 +614,12 @@ ALTER TABLE `log_topup`
   ADD CONSTRAINT `log_topup_ibfk_2` FOREIGN KEY (`id_topup`) REFERENCES `topup` (`id_topup`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
+-- Ketidakleluasaan untuk tabel `materi`
+--
+ALTER TABLE `materi`
+  ADD CONSTRAINT `materi_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
 -- Ketidakleluasaan untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
@@ -601,11 +627,23 @@ ALTER TABLE `pembayaran`
   ADD CONSTRAINT `pembayaran_ibfk_1` FOREIGN KEY (`id_tagihan`) REFERENCES `tagihan` (`id_tagihan`);
 
 --
+-- Ketidakleluasaan untuk tabel `personal_identity`
+--
+ALTER TABLE `personal_identity`
+  ADD CONSTRAINT `personal_identity_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
 -- Ketidakleluasaan untuk tabel `pesanan`
 --
 ALTER TABLE `pesanan`
   ADD CONSTRAINT `id_barang` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`),
   ADD CONSTRAINT `id_user` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
+
+--
+-- Ketidakleluasaan untuk tabel `profil_img`
+--
+ALTER TABLE `profil_img`
+  ADD CONSTRAINT `profil_img_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Ketidakleluasaan untuk tabel `tagihan`
