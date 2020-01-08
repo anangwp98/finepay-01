@@ -155,18 +155,26 @@
                     if($row['ktp'] == true) {
                       $tampilKTP = 1;
                       $showKTP = $row['ktp'];
-                      $tampilrowKTP = "<img  src='../assets/img/datadiri/".$showKTP."' class='rounded-circle'>";
+                      $linkKTP = "../assets/img/datadiri/".$showKTP;
+                      $tampilrowKTP = "
+                        <a href='".$linkKTP."' class='avatar avatar-sm' data-toggle='tooltip' target='_blank'>
+                          <img  src='../assets/img/datadiri/".$showKTP."' class='rounded-circle'>
+                        </a>";
                     } else {
                       $tampilKTP = 0;
-                      $tampilrowKTP = "~";
+                      $tampilrowKTP = "";
                     }
                     if($row['ktm'] == true) {
                       $tampilKTM = 1;
                       $showKTM = $row['ktm'];
-                      $tampilrowKTM = "<img  src='../assets/img/datadiri/".$showKTM."' class='rounded-circle'>";
+                      $linkKTM = "../assets/img/datadiri/".$showKTM;
+                      $tampilrowKTM = "
+                        <a href='".$linkKTM."' class='avatar avatar-sm' data-toggle='tooltip' target='_blank'>
+                          <img  src='../assets/img/datadiri/".$showKTM."' class='rounded-circle'>
+                        </a>";
                     } else {
                       $tampilKTM = 0;
-                      $tampilrowKTM = "~";
+                      $tampilrowKTM = "";
                     }
                   echo "<tr>
                     <th scope='row'>" . $row["username"]. "</th>
@@ -175,12 +183,7 @@
                     <td>".$showJK."</td>
                     <td>
                     <div class='avatar-group'>
-                      <a href='#' class='avatar avatar-sm' data-toggle='tooltip'>
-                          ".$tampilrowKTP."
-                      </a>
-                      <a href='#' class='avatar avatar-sm' data-toggle='tooltip'>
-                          ".$tampilrowKTM."
-                      </a>
+                      ".$tampilrowKTP.$tampilrowKTM."
                     </div>
                     </td>
                     <td scope='row'>
