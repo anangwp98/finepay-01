@@ -29,8 +29,8 @@
         <div class="navbar-collapse-header d-md-none">
           <div class="row">
             <div class="col-6 collapse-brand">
-              <a href="../index.html">
-                <img src="../assets/img/brand/blue.png">
+              <a class="navbar-brand pt-0" href="../admin/index.php">
+                <img alt="Image placeholder" src="../assets/img/brand/logo_finepay.png">
               </a>
             </div>
             <div class="col-6 collapse-close">
@@ -41,17 +41,6 @@
             </div>
           </div>
         </div>
-        <!-- Form -->
-        <form class="mt-4 mb-3 d-md-none">
-          <div class="input-group input-group-rounded input-group-merge">
-            <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <span class="fa fa-search"></span>
-              </div>
-            </div>
-          </div>
-        </form>
         <!-- Navigation -->
         <ul class="navbar-nav">
           <li class="nav-item  class=" active>
@@ -60,6 +49,10 @@
           </li>
           <li class="nav-item  class=" active>
           <a class=" nav-link " href=" ../../index.php"> <i class="fas fa-globe-asia"></i> Go to Website
+            </a>
+          </li>
+          <li class="nav-item  class=" active>
+          <a class=" nav-link " href=" ./view-pesanan.php"> <i class="fas fa-luggage-cart"></i> Data Pesanan
             </a>
           </li>
           <li class="nav-item  class=" active>
@@ -79,22 +72,34 @@
         <!-- Divider -->
         <hr class="my-3">
         <!-- Heading -->
-        <h6 class="navbar-heading text-muted">Cetak Report</h6>
+        <h6 class="navbar-heading text-muted">Upload your S&K</h6>
         <!-- Navigation -->
         <ul class="navbar-nav mb-md-3">
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="ni ni-spaceship"></i> User
+            <a class="nav-link" href="./view-materi.php">
+              <i class="fab fa-pied-piper-hat"></i> Pengaturan
+            </a>
+          </li>
+        </ul>
+        <!-- Divider -->
+        <hr class="my-3">
+        <!-- Heading -->
+        <h6 class="navbar-heading text-muted">Artificial Intelegent</h6>
+        <!-- Navigation -->
+        <ul class="navbar-nav mb-md-3">
+          <li class="nav-item">
+            <a class="nav-link" href="./ai-view-user.php">
+              <i class="fab fa-pied-piper-hat"></i> Data Masuk User
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="ni ni-palette"></i> Barang
+            <a class="nav-link" href="./ai-view-pesanan.php">
+              <i class="ni ni-palette"></i> Data Pesanan
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="ni ni-ui-04"></i> Transaksi
+            <a class="nav-link" href="./ai-view-klasifikasi-data.php">
+              <i class="ni ni-ui-04"></i> Data Klasifikasi
             </a>
           </li>
         </ul>

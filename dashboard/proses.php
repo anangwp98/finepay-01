@@ -36,6 +36,7 @@ if($password == '' AND $username == '') {
 			$_SESSION['notelp'] = $data['nomorTelp'];
 			$_SESSION['jk'] = $data['jk'];
 			$_SESSION['level'] = "admin";
+			
 			// alihkan ke halaman dashboard admin
 			header("location:./admin/");
 		}else if($data['level']=="user"){
@@ -47,6 +48,7 @@ if($password == '' AND $username == '') {
 			$_SESSION['tglLahir'] = $data['tglLahir'];
 			$_SESSION['alamat'] = $data['alamat'];
 			$_SESSION['notelp'] = $data['nomorTelp'];
+			$_SESSION['jk'] = $data['jk'];
 			$_SESSION['level'] = "user";
 			// alihkan ke halaman login kembali
 			header("location:./user/");

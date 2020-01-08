@@ -56,9 +56,10 @@
                 <span class="nav-link-inner--text">Beranda</span>
               </a>
             </li>
+            
             <li class="nav-item">
               <a class="nav-link nav-link-icon" href="./register.php">
-                <i class="ni ni-circle-08"></i>
+                <i class="ni ni-key-25"></i>
                 <span class="nav-link-inner--text">Daftar</span>
               </a>
             </li>
@@ -78,9 +79,18 @@
         <div class="header-body text-center mb-7">
           <div class="row justify-content-center">
             <div class="col-lg-5 col-md-6">
+            <?php 
+                      if(isset($_GET['pesan'])){
+                        if($_GET['pesan'] == "register-success"){
+                            echo "<br><center><b>Registrasi Berhasil!</b></center>";
+                            header('Refresh: 3; URL=login.php');
+                        }
+                      }
+            ?>
               <h1 class="text-white">Selamat Datang Sahabat FinePay</h1>
               <p class="text-lead text-light text-uppercase">Silahkan Login</p>
             </div>
+            
           </div>
         </div>
       </div>

@@ -13,7 +13,7 @@
 
             <?php
 
-            $data_link = "SELECT topup.id_topup, users.nama, topup.jumlah_topup, topup.tanggal_topup, topup.keterangan_topup FROM topup JOIN users ON users.id=topup.id_user";
+            $data_link = "SELECT topup.id_topup, users.nama, topup.jumlah_topup, DATE_FORMAT(topup.tanggal_topup, '%D %M %Y - %H:%i:%s') AS 'tanggal_topup', topup.keterangan_topup FROM topup JOIN users ON users.id=topup.id_user WHERE topup.status=''";
             $hasil_link = mysqli_query($koneksi, $data_link); 
 
             $total_record_link = mysqli_num_rows($hasil_link);
@@ -41,55 +41,21 @@
                     
                     <td>".$row["tanggal_topup"]."</td>
                     <td scope='row'>
-                      <button type='button' class='btn btn-outline-info' data-toggle='modal' data-target='#modal-notification-download". $row["id_topup"] . "'>Lihat</button>
-                      <button type='button' class='btn btn-outline-danger' data-toggle='modal' data-target='#modal-hapus-download". $row["id_topup"] . "'>Hapus</button>
+                      <a href='view-proses-topup.php?id=".$row['id_topup']."'><button type='button' class='btn btn-outline-info'>Proses</button></a>
+                      <button type='button' class='btn btn-outline-danger' data-toggle='modal' data-target='#modal-hapus-topup". $row["id_topup"] . "'>Hapus</button>
                     </td>
                   </tr>"; ?>
                   
                 <!--
                 ======================================================================================
-                        SCRIPT UNTUK MENAMPILKAN MODAL VIEW
-                ======================================================================================
-                -->
-                  <div class="modal fade" id="modal-notification-download<?php echo $row["id_download"]; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
-                    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
-                      <div class="modal-content">    
-                        <div class="modal-header">
-                          <h2 class="modal-title" id="modal-title-notification">ID - <?php echo $row["id_download"] ?></h2>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                          </button>
-                         </div>
-                              
-                         <div class="modal-body">          
-                            <div class="py-3 text-center">
-                              <h3>Nama : </h3><p><?php echo $row["nama"] ?></p>
-                              <h3>Icon : </h3><p><?php echo $row["icon"] ?></p>
-                              <h3>Link : </h3><p><?php echo $row["link"] ?></p>
-                          </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button> 
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                <!--
-                ======================================================================================
-                        SCRIPT AKHIR MENAMPILKAN MODAL
-                ======================================================================================
-                --> 
-                <!--
-                ======================================================================================
                         SCRIPT UNTUK MENAMPILKAN MODAL HAPUS
                 ======================================================================================
                 -->
-                <div class="modal fade" id="modal-hapus-download<?php echo $row["id_download"]; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-1-hapus" aria-hidden="true">
+                <div class="modal fade" id="modal-hapus-topup<?php echo $row["id_topup"]; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-1-hapus" aria-hidden="true">
                   <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
                     <div class="modal-content bg-gradient-danger">
                       <div class="modal-header">
-                        <h2 class="modal-title" id="modal-1-hapus">HAPUS - <?php echo $row["id_download"] ?></h2>
+                        <h2 class="modal-title" id="modal-1-hapus">HAPUS - <?php echo $row["id_topup"] ?></h2>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">×</span>
                         </button>
@@ -100,7 +66,7 @@
                         </div>    
                       </div>
                       <div class="modal-footer">
-                      <a href="hapus-unduh.php?id=<?php echo $row['id_download']; ?>"><button type="button" class="btn btn-white">HAPUS</button></a>
+                      <a href="./hapus-topup.php?id=<?php echo $row['id_topup']; ?>"><button type="button" class="btn btn-white">HAPUS</button></a>
                         <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Batal</button> 
                       </div> 
                     </div>
@@ -111,10 +77,6 @@
                         SCRIPT AKHIR MENAMPILKAN MODAL
                 ======================================================================================
                 -->
-                
-
-                
-
         <?php };
             } else {
               echo "<div class='alert alert-warning text-center' role='alert> 

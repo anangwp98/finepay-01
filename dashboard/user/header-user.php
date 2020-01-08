@@ -5,6 +5,7 @@ include('../koneksi.php');
 if(!isset($_SESSION['username'])){
 	header("location:./../index.php");
 } else {
+    include('query-user.php');
     $sql_view_saldo = "SELECT dompet.saldo as 'jmlsaldo' FROM `dompet` JOIN users ON users.id=dompet.id_user WHERE id_user='$_SESSION[id]'";
     $query_view_saldo= mysqli_query($koneksi, $sql_view_saldo );
     $jml_saldo = mysqli_fetch_array($query_view_saldo);
@@ -35,8 +36,22 @@ if(!isset($_SESSION['username'])){
   <title>
     Welcome <?php echo $_SESSION['nama']; ?>
   </title>
-  <!-- Favicon -->
-  <link href="../assets/img/brand/favicon.png" rel="icon" type="image/png">
+  <!-- Favicon --><!-- Favicon --> 
+
+<?php
+  $id_user_admin = $_SESSION['id'];
+  $sqlImg = "SELECT * FROM profil_img WHERE id_user='$id_user_admin'";
+  $resultImg = mysqli_query($koneksi, $sqlImg);
+
+  while ($rowimg = mysqli_fetch_assoc($resultImg)) {
+      if ( $rowimg['status'] > 0) {
+        $linkFavicon= "../assets/img/theme/".$rowimg['status']."";
+      } else {
+        echo "BELUM ADA FOTO";
+      }
+  }
+?>
+<link href="<?php echo $linkFavicon ?>" rel="icon" type="image/png">
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <!-- Icons -->
@@ -59,7 +74,7 @@ if(!isset($_SESSION['username'])){
       </button>
       <!-- Brand -->
       <a class="navbar-brand pt-0" href="../index.html">
-        <img src="../assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+        <img src="../assets/img/brand/logo_finepay.png" class="navbar-brand-img" alt="...">
       </a>
       <!-- User -->
       <!-- Collapse -->
@@ -69,7 +84,7 @@ if(!isset($_SESSION['username'])){
           <div class="row">
             <div class="col-6 collapse-brand">
               <a href="../index.html">
-                <img src="../assets/img/brand/blue.png">
+                <img src="../assets/img/brand/logo_finepay.png">
               </a>
             </div>
             <div class="col-6 collapse-close">
@@ -94,63 +109,18 @@ if(!isset($_SESSION['username'])){
         <!-- Navigation -->
         <ul class="navbar-nav">
           <li class="nav-item  class=" active" ">
-          <a class=" nav-link active " href=" ../../index.html"> <i class="ni ni-tv-2 text-primary"></i> Website
+          <a class=" nav-link  " href=" ./index.php"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link " href="../examples/icons.html">
-              <i class="ni ni-planet text-blue"></i> Icons
+          
+          <li class="nav-item  class=" active" ">
+          <a class=" nav-link  " href=" ./view-barang.php"> <i class="fas fa-boxes"></i> Data Barang
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link " href="../examples/maps.html">
-              <i class="ni ni-pin-3 text-orange"></i> Maps
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="../examples/profile.html">
-              <i class="ni ni-single-02 text-yellow"></i> User profile
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="../examples/tables.html">
-              <i class="ni ni-bullet-list-67 text-red"></i> Tables
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./login.html">
-              <i class="ni ni-key-25 text-info"></i> Login
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./examples/register.html">
-              <i class="ni ni-circle-08 text-pink"></i> Register
-            </a>
-          </li>
+          
+          
         </ul>
-        <!-- Divider -->
-        <hr class="my-3">
-        <!-- Heading -->
-        <h6 class="navbar-heading text-muted">Documentation</h6>
-        <!-- Navigation -->
-        <ul class="navbar-nav mb-md-3">
-          <li class="nav-item">
-            <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
-              <i class="ni ni-spaceship"></i> Getting started
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html">
-              <i class="ni ni-palette"></i> Foundation
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html">
-              <i class="ni ni-ui-04"></i> Components
-            </a>
-          </li>
-        </ul>
-      </div>
+        
     </div>
   </nav>
   <div class="main-content">
@@ -165,33 +135,33 @@ if(!isset($_SESSION['username'])){
           <li class="nav-item dropdown">
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="media align-items-center">
-                <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="../assets/img/theme/team-4-800x800.jpg">
-                </span>
+              <?php
+		            	$id_user_admin = $_SESSION['id'];
+                  $sqlImg = "SELECT * FROM profil_img WHERE id_user='$id_user_admin'";
+                  $resultImg = mysqli_query($koneksi, $sqlImg);
+                 
+                  while ($rowimg = mysqli_fetch_assoc($resultImg)) {
+                    echo "<span class='avatar avatar-sm rounded-circle'>";
+                      if ( $rowimg['status'] > 0) {
+                        echo "<img src='../assets/img/theme/".$rowimg['status']."' class='rounded-circle'>";
+                      } else {
+                        echo "BELUM ADA FOTO";
+                      }
+                    echo "</span>";
+                  }
+                  ?>
                 <div class="media-body ml-2 d-none d-lg-block">
                   <b> <?php echo $_SESSION['nama'];?> </b>
                 </div>
-              </div>
+              </div> 
             </a>
             <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
               <div class=" dropdown-header noti-title">
                 <h6 class="text-overflow m-0"><?php echo $_SESSION['id']; ?></h6>
               </div>
-              <a href="./examples/profile.html" class="dropdown-item">
+              <a href="./view-profil.php" class="dropdown-item">
                 <i class="ni ni-single-02"></i>
                 <span>My profile</span>
-              </a>
-              <a href="./examples/profile.html" class="dropdown-item">
-                <i class="ni ni-settings-gear-65"></i>
-                <span>Settings</span>
-              </a>
-              <a href="./examples/profile.html" class="dropdown-item">
-                <i class="ni ni-calendar-grid-58"></i>
-                <span>Activity</span>
-              </a>
-              <a href="./examples/profile.html" class="dropdown-item">
-                <i class="ni ni-support-16"></i>
-                <span>Support</span>
               </a>
               <div class="dropdown-divider"></div>
               <a href="../logout.php" class="dropdown-item">
@@ -215,35 +185,40 @@ if(!isset($_SESSION['username'])){
               <div class="card card-stats mb-4 mb-xl-0">
                 <div class="card-body">
                   <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Tagihan Saya</h5>
-                      <span class="h2 font-weight-bold mb-0"><?php echo "Jml Tagihan"?></span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                      <i class="fas fa-file-invoice-dollar"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-6">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
+                    <div class="col"> 
                       <h5 class="card-title text-uppercase text-muted mb-0">Saldo Saya</h5>
                       <span class="font-weight-bold mb-0 font-biru"><?php echo $a; ?></span>
                       <?php
                         if ($showCreateDompet == true) {
-                            echo "<br>                                               
-                                <button class='btn btn-icon btn-secondary btn-card-1' type='button'>
-                                <span class='btn-inner--icon'><i class='fas fa-plus'></i></span>
+                          echo "<br>                                               
+                          <p class='mt-3 mb-0 text-muted text-sm'>                                      
+                          <button class='btn btn-icon btn-info btn-card-1' type='button' data-toggle='modal' data-target='#modal-input-topup'>
+                          <span class='btn-inner--icon'><i class='fas fa-plus'></i></span>
 
-                                <span class='btn-inner--text'>Tambah</span>
-
-                                </button>";
+                          <span class='btn-inner--text'>Buka</span>
+                        </button>
+                      </p>
+                      <div class='modal fade' id='modal-input-topup' tabindex='-1' role='dialog' aria-labelledby='modal-input-topup' aria-hidden='true'>
+                      <div class='modal-dialog modal- modal-dialog-centered modal-xl' role='document'>
+                        <div class='modal-content'>
+                          <div class='modal-body p-0'>
+                            <div class='card bg-secondary shadow border-0'>
+                              <div class='card-header bg-transparent pb-0'>
+                                <div class='text-muted text-center mt-2 mb-3'><small>Yakin anda membuat dompet?</small></div>
+                                  <div class='card-body px-lg-5 py-lg-5'>
+                                    <form action='./proses.php' method='POST'>
+                                      <div class='text-center'>
+                                        <input type='hidden' name='id' class='btn btn-primary my-4'>
+                                        <input type='submit' name='create_dompet' class='btn btn-primary my-4' value='Ya'>
+                                      </div>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>";
                         } else {
                             echo "
                                 <p class='mt-3 mb-0 text-muted text-sm'>                                      
@@ -304,19 +279,51 @@ if(!isset($_SESSION['username'])){
                 </div>
               </div>
             </div>
+            
             <div class="col-xl-3 col-lg-6">
               <div class="card card-stats mb-4 mb-xl-0">
                 <div class="card-body">
                   <div class="row">
+                  <?php
+                  if($view_pesanan == true) {
+                    while($row_pesan = mysqli_fetch_assoc($sql_cek_pesanan)) {
+                  ?>
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Top Up</h5>
-                      <span class="h2 font-weight-bold mb-0">924</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Barang Kamu</h5>
+                      <span class="h2 font-weight-bold mb-0"><?php echo  $row_pesan['nama_barang']; ?></span>
                     </div>
                     <div class="col-auto">
-                      <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                      <i class="fas fa-money-check-alt"></i>
+                      <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                        <i class="fas fa-percent"></i>
                       </div>
                     </div>
+                    <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-success mr-2">Status : </span>
+                    <span class="text-nowrap"><?php echo $row_pesan['ket_pesanan']; ?></span>
+                  </p>
+                    <?php }
+                  } else if($view_pesanan == false) {
+                  ?>
+                  <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Ajukan Barang Kamu</h5>
+                      <span class="h2 font-weight-bold mb-0">
+                      </span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                        <i class="fas fa-percent"></i>
+                      </div>
+                    </div>
+                    <a href='view-data-barang.php'>
+                      <button class='btn btn-icon btn-info btn-card-1' type='button'>
+                        <span class='btn-inner--icon'><i class='fas fa-plus'></i></span>
+                        <span class='btn-inner--text'>Ajukan Sekarang</span>
+                      </button>
+                      </a>
+                  <?php 
+                  }
+                  ?>
+                    
                   </div>
                 </div>
               </div>
@@ -325,20 +332,24 @@ if(!isset($_SESSION['username'])){
               <div class="card card-stats mb-4 mb-xl-0">
                 <div class="card-body">
                   <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Ajukan Barang</h5>
-                      <span class="h2 font-weight-bold mb-0">49,65%</span>
+                    <div class="col"> 
+                      <h5 class="card-title text-uppercase text-muted mb-0">Lihat Syarat Dan Ketentuan</h5>
+                        <a href="./view-syarat-ketentuan.php">
+                        <p class='mt-3 mb-0 text-muted text-sm'>                                      
+                         <button class='btn btn-icon btn-info btn-card-1' type='button'>
+                         <span class='btn-inner--icon'><i class="far fa-eye"></i></span>
+
+                            <span class='btn-inner--text'>Lihat</span>
+                          </button>
+                        </p>
+                        </a>
                     </div>
                     <div class="col-auto">
-                      <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                        <i class="fas fa-percent"></i>
+                      <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                      <i class="fas fa-file-contract"></i>
                       </div>
                     </div>
                   </div>
-                  <p class="mt-3 mb-0 text-muted text-sm">
-                    <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
-                    <span class="text-nowrap">Since last month</span>
-                  </p>
                 </div>
               </div>
             </div>
