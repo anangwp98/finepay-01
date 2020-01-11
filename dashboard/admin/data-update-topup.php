@@ -7,10 +7,10 @@ $query_mysql_view_domet_admin = mysqli_query($koneksi,
 while ($data_dompet_admin = mysqli_fetch_array($query_mysql_view_domet_admin)){ 
 
 $query_mysql_view_detail_topup = mysqli_query($koneksi, 
-    "SELECT topup.id_topup, topup.jumlah_topup, topup.keterangan_topup, DATE_FORMAT(topup.tanggal_topup, '%D %M %Y - %H:%i:%s') AS 'tanggal_topup', users.nama, users.id AS 'user_id', dompet.saldo, dompet.id_dompet
+    "SELECT topup.id_topup, topup.jml_topup, topup.status, DATE_FORMAT(topup.tgl_topup, '%D %M %Y - %H:%i:%s') AS 'tanggal_topup', user.nama, user.id_user, dompet.saldo, dompet.id_dompet
     FROM topup 
-    JOIN users ON topup.id_user=users.id 
-    JOIN dompet ON dompet.id_user=users.id WHERE topup.id_topup='$id_detail_topup'");
+    JOIN user ON topup.id_user=user.id_user 
+    JOIN dompet ON dompet.id_user=user.id_user WHERE topup.id_topup='$id_detail_topup'");
 while($data_detail_topup = mysqli_fetch_array($query_mysql_view_detail_topup)){
 
 ?>
