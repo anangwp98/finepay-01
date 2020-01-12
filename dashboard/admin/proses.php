@@ -174,12 +174,12 @@ if(isset($_POST['simpan_user'])) {
 
                     $queryUpload = "INSERT INTO `materi` (`id_materi`, `id_user`, `nama_materi`, `nama_file`) VALUES ('$id_upload', '$id_user_upload', '$name_materi', '$filenameNew');";
                     if(mysqli_query($koneksi, $queryUpload)) {
+                        
+                        move_uploaded_file($fileTmpName, $fileDestination);
                         header("location: ./view-materi.php?upload-success");
                     } else {
                         echo"<script language='javascript'> alert('Data Gagal Disimpan!');history.go(-1); </script>";
                     }
-                    
-                    move_uploaded_file($fileTmpName, $fileDestination);
             } else {
                 echo "Your file is too big1";
             }
