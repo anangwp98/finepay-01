@@ -6,7 +6,7 @@ include('./header-report.php');
 
 ?>
 
-    <p align="center">LAPORAN DATA USER FINEPAY</p>
+    <p align="center">LAPORAN DATA PESANNA FINEPAY</p>
     <table width="100%" id="tabel-data-barang" class="table align-items-center">
    	      
   <tr align="center">

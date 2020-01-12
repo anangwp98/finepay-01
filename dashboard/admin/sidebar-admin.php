@@ -115,7 +115,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./view-report-barang.php">
+            <a class="nav-link" href="./view-report-barang.php" target="_blank">
             <i class="fas fa-print"></i>Data Barang
             </a>
           </li>
@@ -126,7 +126,7 @@
           </li>
           
           <li class="nav-item">
-            <a class="nav-link" href="./ai-view-user.php">
+            <a class="nav-link" href="./view-report-topup.php" target="_blank">
             <i class="fas fa-print"></i>Data Topup
             </a>
           </li>
