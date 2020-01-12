@@ -77,7 +77,7 @@
         <ul class="navbar-nav mb-md-3">
           <li class="nav-item">
             <a class="nav-link" href="./view-materi.php">
-              <i class="fab fa-pied-piper-hat"></i> Pengaturan
+            <i class="fas fa-sliders-h"></i> Pengaturan
             </a>
           </li>
         </ul>
