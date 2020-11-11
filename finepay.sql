@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Jan 2020 pada 17.17
+-- Waktu pembuatan: 13 Jan 2020 pada 09.08
 -- Versi server: 10.4.6-MariaDB
 -- Versi PHP: 7.3.8
 
@@ -86,6 +86,19 @@ CREATE TABLE `dompet` (
   `saldo` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `dompet`
+--
+
+INSERT INTO `dompet` (`id_dompet`, `id_user`, `jenis_dompet`, `saldo`) VALUES
+('DP1462113434', 'FNlia11012020-0', 'Tabungan', 100000),
+('DP1619454410', 'FNalvin11012020', 'Tabungan', 0),
+('DP2065872473', 'FNuser09122019-', 'Tabungan', 12923200),
+('DP433559096', 'FNrona123251220', 'Tabungan', 0),
+('DP477236283', 'FNchand11012020', 'Tabungan', 0),
+('DP770021272', 'FNzainal1101202', 'Tabungan', 0),
+('WL-1851736073', 'ADM001', 'test', 1010000);
+
 -- --------------------------------------------------------
 
 --
@@ -149,6 +162,16 @@ CREATE TABLE `klasifikasi_ai` (
   `ket` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `klasifikasi_ai`
+--
+
+INSERT INTO `klasifikasi_ai` (`id_klasifikasi`, `id_pesanan`, `harga`, `dp`, `jml_bulan`, `tahun`, `ket`) VALUES
+('WL-1344827668', 'ORD-137705', 'Kecil', 'Tinggi', 'Normal', 'Tua', 'ACCEPTED'),
+('WL-1775295711', 'ORD-477358', 'Kecil', 'Tinggi', 'Normal', 'Tua', 'ACCEPTED'),
+('WL-1796395125', 'ORD-535075', 'Kecil', 'Tinggi', 'Normal', 'Tua', 'DECLINE'),
+('WL-992361598', 'ORD-775600', 'Kecil', 'Tinggi', 'Normal', 'Tua', 'ACCEPTED');
+
 -- --------------------------------------------------------
 
 --
@@ -164,6 +187,19 @@ CREATE TABLE `log_topup` (
   `id_topup` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `log_topup`
+--
+
+INSERT INTO `log_topup` (`id`, `tgl_diterima`, `saldo_awal`, `saldo_akhir`, `id_user`, `id_topup`) VALUES
+('LGTP-13850267892020-', '2020-01-11 13:27:33', 0, 90000, 'ADM001', 'TP8427554382020-01-1'),
+('LGTP-13926329802020-', '2020-01-11 09:42:44', 1200, 11200, 'ADM001', 'TP10492886912020-01-'),
+('LGTP-18845264602020-', '2020-01-11 10:58:23', 11200, 911200, 'ADM001', 'TP5434811322020-01-0'),
+('LGTP-18935819722020-', '2020-01-12 18:38:57', 90000, 100000, 'ADM001', 'TP3829717762020-01-1'),
+('LGTP-5138303942020-0', '2020-01-11 09:42:37', 0, 1200, 'ADM001', 'TP10472070822020-01-'),
+('LGTP-5586172682020-0', '2020-01-11 10:58:43', 911200, 923200, 'ADM001', 'TP5895092522020-01-0'),
+('LGTP-6022939132020-0', '2020-01-11 11:59:25', 923200, 12923200, 'ADM001', 'TP6813664532020-01-1');
+
 -- --------------------------------------------------------
 
 --
@@ -176,6 +212,14 @@ CREATE TABLE `materi` (
   `nama_materi` varchar(100) NOT NULL,
   `nama_file` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `materi`
+--
+
+INSERT INTO `materi` (`id_materi`, `id_user`, `nama_materi`, `nama_file`) VALUES
+('2037732638', 'ADM001', '', 'Invoice-ORDER-ID-349420.pdf'),
+('523138437', 'ADM001', 'KRS', 'KRS - UNIVERSITAS AMIKOM Yogyakarta.pdf');
 
 -- --------------------------------------------------------
 
@@ -225,6 +269,17 @@ CREATE TABLE `pesanan` (
   `ket_pesanan` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `pesanan`
+--
+
+INSERT INTO `pesanan` (`id_pesanan`, `id_user`, `id_barang`, `tgl_pesanan`, `ket_pesanan`) VALUES
+('ORD-137705', 'FNzainal1101202', 'BRG-641730404Acer-Sw', '2020-01-11 10:53:00', 'ACCEPTED'),
+('ORD-477358', 'FNrona123251220', 'BRG-1981474627SAMSUN', '2020-01-11 09:15:12', 'ACCEPTED'),
+('ORD-535075', 'FNlia11012020-0', 'BRG-641730404Acer-Sw', '2020-01-11 12:14:05', 'DECLINE'),
+('ORD-716898', 'FNalvin11012020', 'BRG-1981474627SAMSUN', '2020-01-11 12:22:14', 'On Proccess'),
+('ORD-775600', 'FNchand11012020', 'BRG-1981474627SAMSUN', '2020-01-11 11:54:20', 'ACCEPTED');
+
 -- --------------------------------------------------------
 
 --
@@ -242,9 +297,10 @@ CREATE TABLE `profil_img` (
 --
 
 INSERT INTO `profil_img` (`id_profil`, `id_user`, `status`) VALUES
-('1039287470', 'ADM001', '5e14393d1f4e24.52976601.png'),
+('1039287470', 'ADM001', '5e1965b71aece1.05820360.jpg'),
 ('1394978707', 'FNuser09122019-', '5e14bd5a03a0c7.15088838.jpg'),
 ('2043718063', 'FNusr06012020-1', '5e137514d0b246.80588203.png'),
+('474638249', 'FNrona123251220', '5e16fc10a36ed0.10203319.jpeg'),
 ('545890484', 'FNrona123091220', '5e14396ba35e48.89262645.jpg');
 
 -- --------------------------------------------------------
@@ -338,6 +394,17 @@ CREATE TABLE `tagihan` (
   `jml_bulan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `tagihan`
+--
+
+INSERT INTO `tagihan` (`id_tagihan`, `id_pesanan`, `jml_dp`, `jml_tagihan`, `tgl_jatuh_tempo`, `jml_bulan`) VALUES
+('TRX-149371', 'ORD-535075', 500000, 1391567, NULL, 12),
+('TRX-395203', 'ORD-775600', 100000, 318333, NULL, 12),
+('TRX-469725', 'ORD-137705', 500000, 1391567, NULL, 12),
+('TRX-541431', 'ORD-477358', 1000000, 303333, NULL, 12),
+('TRX-548245', 'ORD-716898', 10000000, 153333, NULL, 12);
+
 -- --------------------------------------------------------
 
 --
@@ -352,6 +419,19 @@ CREATE TABLE `topup` (
   `tanggal_topup` datetime NOT NULL,
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `topup`
+--
+
+INSERT INTO `topup` (`id_topup`, `id_user`, `jumlah_topup`, `keterangan_topup`, `tanggal_topup`, `status`) VALUES
+('TP10472070822020-01-', 'FNuser09122019-', 1200, '123', '2020-01-09 01:29:02', 'SELESAI'),
+('TP10492886912020-01-', 'FNuser09122019-', 10000, 'test', '2020-01-09 22:31:46', 'SELESAI'),
+('TP3829717762020-01-1', 'FNuser09122019-', 10000, 'test', '2020-01-12 18:38:44', 'SELESAI'),
+('TP5434811322020-01-0', 'FNuser09122019-', 900000, 'test', '2020-01-09 01:35:33', 'SELESAI'),
+('TP5895092522020-01-0', 'FNrona123251220', 12000, 'test', '2020-01-09 17:54:11', 'SELESAI'),
+('TP6813664532020-01-1', 'FNchand11012020', 12000000, 'SALDO', '2020-01-11 11:58:19', 'SELESAI'),
+('TP8427554382020-01-1', 'FNalvin11012020', 90000, 'PEMBAYARAN KE AAN', '2020-01-11 12:22:42', 'SELESAI');
 
 -- --------------------------------------------------------
 
@@ -392,17 +472,22 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `nama`, `email`, `password`, `tglLahir`, `jk`, `angkatan`, `alamat`, `nomorTelp`, `level`) VALUES
-('ADM001', 'anangwp', 'ANANG WAHYU PRADANA', 'anangwahyupradanaofficial@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '1998-01-01', 'P', 0000, 'AMBYAARRRRRASRARSARSJABSKAJBSAK', NULL, 'admin'),
+('ADM001', 'anangwp', 'ANANG WAHYU PRADANA', 'anangwahyupradanaofficial@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '1998-01-29', 'L', 0000, 'Jl. Nusa Indah II no 57 Condong Catur Sleman Yogyakarta', NULL, 'admin'),
 ('FNaditya2512201', 'aditya', 'Aditya Ramadhan', 'aditya@gmail.com', 'ee11cbb19052e40b07aac0ca060c23ee', '0000-00-00', 'L', 2017, 'Gunung Kidul', '082230381413', 'user'),
+('FNalvin11012020', 'alvin', 'ALVIN ADWITYA R', 'alvin@alvin.com', '7627cb9027e713e301e83a8f13057055', '0000-00-00', 'L', 0000, NULL, NULL, 'user'),
 ('FNanang12310601', 'anang1231', 'ANANG WAHYU PRADANA', 'user@gmail.com', '202cb962ac59075b964b07152d234b70', '0000-00-00', 'L', 0000, NULL, NULL, 'user'),
 ('FNanangwp982512', 'anangwp98', 'ANANG WAHYU PRADANA', 'anangwahyupradanaofficial@gmail.com', 'ee11cbb19052e40b07aac0ca060c23ee', '0000-00-00', 'L', 0000, 'PONOROGO', '082230381413', 'user'),
+('FNchand11012020', 'chand', 'chandra', 'chand@gmail', '81dc9bdb52d04dc20036dbd8313ed055', '0000-00-00', 'L', 0000, NULL, NULL, 'user'),
 ('FNekanov0601202', 'ekanov', 'Eka Novitasari', 'eka@gmail.com', '202cb962ac59075b964b07152d234b70', '0000-00-00', 'P', 2018, 'Yogyakarta', '082230381413', 'user'),
 ('FNfita06012020-', 'fita', 'Fita Dinasty', 'fita.dinasty@gmail.com', '202cb962ac59075b964b07152d234b70', '0000-00-00', 'P', 2017, 'Cilacap', '082230381413', 'user'),
+('FNlia11012020-0', 'lia', 'lia', 'lia@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '0000-00-00', 'P', 0000, NULL, NULL, 'user'),
 ('FNrona123091220', 'rona123', 'M RONA SETYOWARDANI', 'rona.1125@students.amikom.ac.id', '689b6f533e39e77830b46315ab4cb501', '2019-12-01', 'L', 2019, 'Jl. Nusa Indah II no 57 Condong Catur, Sleman, Yogyakarta', '087758532425', 'admin'),
 ('FNrona123251220', 'rona123', 'M RONA SETYOWARDANI', 'rona.1125@students.amikom.ac.id', 'ee11cbb19052e40b07aac0ca060c23ee', '0000-00-00', 'L', 2014, 'MALUKU UTARA', '082230381413', 'user'),
 ('FNuser06012020-', 'user', 'Google Play', 'user@gmail.com', 'd41d8cd98f00b204e9800998ecf8427e', '0000-00-00', 'L', 0000, NULL, NULL, 'user'),
 ('FNuser09122019-', 'user', 'USER TEST', 'user@gmail.com', 'ee11cbb19052e40b07aac0ca060c23ee', '2020-01-28', 'P', 2019, 'TEST ALAMAT', '', 'user'),
-('FNusr06012020-1', 'usr', 'USER TEST', 'a@gmail.com', 'ee11cbb19052e40b07aac0ca060c23ee', '2020-01-11', 'P', 0000, 'TEST', NULL, 'user');
+('FNusr06012020-1', 'usr', 'USER TEST', 'a@gmail.com', 'ee11cbb19052e40b07aac0ca060c23ee', '2020-01-11', 'P', 0000, 'TEST', NULL, 'user'),
+('FNwahidin110120', 'wahidin', 'Wahidin', 'a17wahidin@gmail.com', '660a97fb084ce39e7ef7777c278fca3d', '2020-01-25', 'L', 0000, '', NULL, 'user'),
+('FNzainal1101202', 'zainal', 'zainal', 'ZAINAL@yahoo.com', '44c7be48226ebad5dca8216674cad62b', '0000-00-00', 'L', 0000, NULL, NULL, 'user');
 
 -- --------------------------------------------------------
 
@@ -415,6 +500,13 @@ CREATE TABLE `website` (
   `nama` varchar(50) NOT NULL,
   `deskripsi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `website`
+--
+
+INSERT INTO `website` (`id_website`, `nama`, `deskripsi`) VALUES
+('WB-462618683', 'FINEPAY', 'Dapatkan  layanan kami di :');
 
 --
 -- Indexes for dumped tables
